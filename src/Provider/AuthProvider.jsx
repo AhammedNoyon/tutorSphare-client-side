@@ -50,10 +50,8 @@ const AuthProvider = ({ children }) => {
   ///========>> observer for save current user
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currenUser) => {
-      if (currenUser?.email) {
-        setUser(currenUser);
-        setLoading(false);
-      }
+      setUser(currenUser);
+      setLoading(false);
     });
     return () => {
       unSubscribe();

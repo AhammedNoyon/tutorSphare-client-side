@@ -1,12 +1,15 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const [eye, setEye] = useState(false);
   const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -25,6 +28,7 @@ const LoginForm = () => {
             timer: 1500,
           });
           form.reset();
+          navigate(location.pathname || "/");
         }
       })
       .catch((error) => {

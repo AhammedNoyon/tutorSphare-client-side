@@ -40,7 +40,7 @@ const MyTutorials = () => {
           <tbody className="">
             {/* row 1 */}
             <tr>
-              <td>1</td>
+              <td className="dark:text-white">1</td>
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">

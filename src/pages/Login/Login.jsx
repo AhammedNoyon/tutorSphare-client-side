@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { signInByGoogle } = useContext(AuthContext);
+  const location = useLocation();
+  console.log(location);
   //google login
   const handleGoogleLogin = () => {
     signInByGoogle()

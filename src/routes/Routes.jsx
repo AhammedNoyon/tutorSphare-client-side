@@ -8,6 +8,7 @@ import FindTutors from "../pages/FindTutors/FindTutors";
 import AddTutorials from "../pages/AddTutorials/AddTutorials";
 import MyBookedTutors from "../pages/MyBookedTutors/MyBookedTutors";
 import MyTutorials from "../pages/MyTutorials/MyTutorials";
+import PrivateRoutes from "../Private/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -26,15 +27,27 @@ const router = createBrowserRouter([
       },
       {
         path: "add-tutorials",
-        element: <AddTutorials></AddTutorials>,
+        element: (
+          <PrivateRoutes>
+            <AddTutorials></AddTutorials>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "my-tutorials",
-        element: <MyTutorials></MyTutorials>,
+        element: (
+          <PrivateRoutes>
+            <MyTutorials></MyTutorials>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "my-booked-tutors",
-        element: <MyBookedTutors></MyBookedTutors>,
+        element: (
+          <PrivateRoutes>
+            <MyBookedTutors></MyBookedTutors>
+          </PrivateRoutes>
+        ),
       },
 
       {
