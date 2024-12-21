@@ -9,12 +9,13 @@ import AddTutorials from "../pages/AddTutorials/AddTutorials";
 import MyBookedTutors from "../pages/MyBookedTutors/MyBookedTutors";
 import MyTutorials from "../pages/MyTutorials/MyTutorials";
 import PrivateRoutes from "../Private/PrivateRoutes";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <h3>Create a error page</h3>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
