@@ -1,14 +1,41 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const [eye, setEye] = useState(false);
+  const { signInUser } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const objectFormData = Object.fromEntries(formData.entries());
-    console.log(objectFormData);
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    ////=========>> sign in user
+    signInUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        if (user) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "sign in  successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.reset();
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Please enter your valid info..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
   return (
     <div className=" bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col justify-center items-center px-6 md:px-12">

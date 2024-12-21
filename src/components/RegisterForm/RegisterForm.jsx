@@ -1,14 +1,107 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const RegisterForm = () => {
   const [eye, setEye] = useState(false);
+  const { manageUserProfile, registerUpUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const objectFormData = Object.fromEntries(formData.entries());
-    console.log(objectFormData);
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    ///=======>>>>> some validation
+
+    if (name.length < 3) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please enter your name more than 3 character!",
+      });
+    }
+    if (password.length < 6) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please password must more than 6 character!",
+      });
+    }
+    const digit = /(?=.*[0-9])/;
+    const upperCase = /(?=.*[A-Z])/;
+    const lowerCase = /(?=.*[a-z])/;
+    const special = /(?=.*[\W_])/;
+
+    if (!digit.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter at least digit!",
+      });
+    }
+    if (!upperCase.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter at least upperCase!",
+      });
+    }
+    if (!lowerCase.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter at least lowerCase!",
+      });
+    }
+    if (!special.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter at least special character!",
+      });
+    }
+    ///=======>>>>> register user
+    registerUpUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        if (user) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Register successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          ////=======>>>>>update profile user
+          manageUserProfile(name, photo)
+            .then(() => {})
+            .catch((error) => {
+              Swal.fire({
+                position: "center",
+                icon: "error",
+                title: error.errorMessage,
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            });
+        }
+        form.reset();
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: errorMessage,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
 
   return (

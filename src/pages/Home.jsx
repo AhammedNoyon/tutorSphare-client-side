@@ -1,8 +1,19 @@
+import Slider from "../components/Slider/Slider";
+import Status from "../components/Status/Status";
+
 const Home = () => {
   return (
-    <div>
-      <h3 className="text-5xl text-red-600">Home</h3>
-    </div>
+    <>
+      <section>
+        <Slider></Slider>
+      </section>
+      <section className="bg-primaryColor dark:bg-[#111627]">
+        <Status></Status>
+      </section>
+      <section>category</section>
+      <section>one more</section>
+      <section>one more</section>
+    </>
   );
 };
 
