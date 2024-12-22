@@ -14,7 +14,7 @@ const AddTutorials = () => {
     tutorialObjectData.review = 0;
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/add-tutorials",
+        "http://localhost:5000/tutorials",
         tutorialObjectData
       );
       if (data.insertedId) {
@@ -113,6 +113,7 @@ const AddTutorials = () => {
                 <input
                   type="url"
                   name="tutorialImage"
+                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                   placeholder="Tutorial image url"
                 />
@@ -125,6 +126,7 @@ const AddTutorials = () => {
                 <input
                   type="text"
                   name="tutorialLanguage"
+                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                   placeholder="Tutorial Language"
                 />
@@ -138,18 +140,20 @@ const AddTutorials = () => {
                 <input
                   type="number"
                   name="tutorialPrice"
+                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                   placeholder="Price"
                 />
               </div>
-              {/* Rating */}
+              {/* review */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Rating
                 </label>
                 <input
                   type="number"
-                  name="tutorialRating"
+                  name="review"
+                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                   placeholder="tutorialRating"
                 />
@@ -166,6 +170,7 @@ const AddTutorials = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                 rows="4"
                 placeholder="Tutorial Description"
+                required
               ></textarea>
             </div>
 
