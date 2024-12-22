@@ -1,6 +1,35 @@
+import axios from "axios";
+import { useContext } from "react";
 import { FaSave } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddTutorials = () => {
+  const { user } = useContext(AuthContext);
+  const handleAddTutorial = async (event) => {
+    event.preventDefault();
+    const tutorialData = new FormData(event.target);
+    // console.log(tutorialData);
+    const tutorialObjectData = Object.fromEntries(tutorialData.entries());
+    tutorialObjectData.review = 0;
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/add-tutorials",
+        tutorialObjectData
+      );
+      if (data.insertedId) {
+        return Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Tutorial added successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div
@@ -45,7 +74,7 @@ const AddTutorials = () => {
 
         {/* Right Section */}
         <div className="lg:col-span-2">
-          <form className="space-y-6 ">
+          <form onSubmit={handleAddTutorial} className="space-y-6 ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {/* Name */}
               <div className="space-y-2">
@@ -54,7 +83,9 @@ const AddTutorials = () => {
                 </label>
                 <input
                   type="text"
-                  name="name"
+                  name="tutorName"
+                  defaultValue={user?.displayName}
+                  readOnly
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                   placeholder="Your Name"
                 />
@@ -67,7 +98,9 @@ const AddTutorials = () => {
                 </label>
                 <input
                   type="email"
-                  name="email"
+                  name="tutorEmail"
+                  defaultValue={user?.email}
+                  readOnly
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                   placeholder="Your Email"
                 />
@@ -75,13 +108,13 @@ const AddTutorials = () => {
               {/* Image */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Name
+                  image
                 </label>
                 <input
                   type="url"
-                  name="image"
+                  name="tutorialImage"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
-                  placeholder="Tutorial photo url"
+                  placeholder="Tutorial image url"
                 />
               </div>
               {/* Language */}
@@ -91,7 +124,7 @@ const AddTutorials = () => {
                 </label>
                 <input
                   type="text"
-                  name="language"
+                  name="tutorialLanguage"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                   placeholder="Tutorial Language"
                 />
@@ -104,22 +137,21 @@ const AddTutorials = () => {
                 </label>
                 <input
                   type="number"
-                  name="price"
+                  name="tutorialPrice"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                   placeholder="Price"
                 />
               </div>
-              {/* Review */}
+              {/* Rating */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Review
+                  Rating
                 </label>
                 <input
                   type="number"
-                  name="review"
+                  name="tutorialRating"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
-                  placeholder=" 0"
-                  disabled
+                  placeholder="tutorialRating"
                 />
               </div>
             </div>
@@ -130,7 +162,7 @@ const AddTutorials = () => {
                 Description
               </label>
               <textarea
-                name="description"
+                name="tutorialDescription"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
                 rows="4"
                 placeholder="Tutorial Description"

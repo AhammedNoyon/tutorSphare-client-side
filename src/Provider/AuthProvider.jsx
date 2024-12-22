@@ -57,6 +57,7 @@ const AuthProvider = ({ children }) => {
       unSubscribe();
     };
   }, []);
+  ///======>>>> context value
   const authInfo = {
     user,
     loading,
