@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaBook, FaClock, FaEye, FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const FindTutors = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -37,24 +38,24 @@ const FindTutors = () => {
         {tutorials.map((tutorial) => (
           <div
             key={tutorial._id}
-            className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg border border-gray-200 flex items-start"
+            className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg border border-gray-200 flex flex-col lg:flex-row items-start"
           >
             {/* Image Section */}
-            <div className="w-1/3">
+            <div className="lg:w-1/3">
               <img
                 src={tutorial?.tutorialImage}
                 alt="Course Thumbnail"
-                className="w-full h-full object-cover rounded-l-lg"
+                className="w-full h-full object-cover rounded-l-lg  "
               />
-              {/* Duration Badge */}
-              <div className="absolute bg-yellow-500 text-white text-sm font-semibold px-3 py-1 rounded-md flex items-center top-2 left-2">
+              {/* Duration Badge
+              <div className="absolute bg-yellow-500 text-white text-sm font-semibold px-3 py-1 rounded-md flex items-center">
                 <FaClock className="mr-1" />
                 12 Weeks
-              </div>
+              </div> */}
             </div>
 
             {/* Content Section */}
-            <div className="w-2/3 p-4">
+            <div className="w-full lg:w-2/3 p-4">
               {/* Price */}
               <p className="text-red-500 font-bold text-lg">
                 ${tutorial?.tutorialPrice}
@@ -85,17 +86,24 @@ const FindTutors = () => {
               {/* Lessons and Students */}
               <div className="flex items-center justify-between text-gray-600 text-sm">
                 <div>
-                  <img src={tutorial?.tutorImage} alt="tutor" />
-                  <div className="flex items-center">
+                  <div className="w-16 h-16 rounded-full border-2">
+                    <img src={tutorial?.tutorImage} alt="tutor" />
+                  </div>
+                  <div className="flex items-center text-xl font-bold my-2">
                     <FaUser className="mr-1" />
                     {tutorial?.tutorName}
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-lg">
                   <FaEye className="mr-1" />
-                  {tutorial?.review}
+                  <span>{tutorial?.review}</span>
                 </div>
               </div>
+              <Link to="/tutor/:details" state={tutorial}>
+                <button className="w-full bg-gradient-to-r from-primaryColor/60 to-primaryColor/70 text-white py-2 px-4 rounded-md shadow-lg hover:bg-primaryColor  transition duration-300 ">
+                  See Details
+                </button>
+              </Link>
             </div>
           </div>
         ))}

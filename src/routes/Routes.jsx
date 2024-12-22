@@ -10,6 +10,7 @@ import MyBookedTutors from "../pages/MyBookedTutors/MyBookedTutors";
 import MyTutorials from "../pages/MyTutorials/MyTutorials";
 import PrivateRoutes from "../Private/PrivateRoutes";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import TutorialDetails from "../pages/TutorialDetails/TutorialDetails";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "find-tutors",
         element: <FindTutors></FindTutors>,
+      },
+      {
+        path: "tutor/:details",
+        element: (
+          <PrivateRoutes>
+            <TutorialDetails></TutorialDetails>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "add-tutorials",
