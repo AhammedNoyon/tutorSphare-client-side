@@ -9,6 +9,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../firebase/firebase.init";
+import { data } from "react-router-dom";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -49,9 +51,26 @@ const AuthProvider = ({ children }) => {
   };
   ///========>> observer for save current user
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currenUser) => {
+    const unSubscribe = onAuthStateChanged(auth, async (currenUser) => {
       setUser(currenUser);
-      setLoading(false);
+      if (currenUser?.email) {
+        const email = currenUser?.email;
+        const { data } = axios.post("http://localhost:5000/jwt", email, {
+          withCredentials: true,
+        });
+        setLoading(false);
+      } else {
+        const { data } = axios.post(
+          "http://localhost:5000/jwt/logout",
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+
+        setLoading(false);
+      }
+      ////======put in the right place
     });
     return () => {
       unSubscribe();

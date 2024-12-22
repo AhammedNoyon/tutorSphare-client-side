@@ -1,17 +1,18 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaBook, FaClock, FaEye, FaUser } from "react-icons/fa";
+import { FaEye, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate/useAxiosPrivate";
 
 const FindTutors = () => {
   const [tutorials, setTutorials] = useState([]);
+  const axiosPrivateInstance = useAxiosPrivate();
   useEffect(() => {
     // const { data } = axios.get("http://localhost:5000/tutorials");
     // console.log(data);
-    axios.get("http://localhost:5000/tutorials").then((res) => {
+    axiosPrivateInstance.get("/tutorials").then((res) => {
       setTutorials(res.data);
     });
-  }, []);
+  }, [axiosPrivateInstance]);
   return (
     <div>
       <div
