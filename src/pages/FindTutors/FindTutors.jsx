@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { FaBook, FaClock, FaEye, FaUser } from "react-icons/fa";
 
 const FindTutors = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -8,49 +8,97 @@ const FindTutors = () => {
     // const { data } = axios.get("http://localhost:5000/tutorials");
     // console.log(data);
     axios.get("http://localhost:5000/tutorials").then((res) => {
-      console.log(res.data);
+      setTutorials(res.data);
     });
   }, []);
   return (
     <div>
-      <h3>Find Tutors</h3>
-      <div className="group relative w-full max-w-sm  bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 dark:bg-[#505050] flex gap-4">
-        {/* Image Section */}
-        <div className="relative overflow-hidden ">
-          <img
-            src="image"
-            alt="Card"
-            className="w-80 h-80 mx-auto object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-            <p className="text-white text-lg font-semibold"></p>
+      <div
+        className="hero min-h-[400px]"
+        style={{
+          backgroundImage:
+            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-neutral-content text-center">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <p className="mb-5">
+              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+              et a id nisi.
+            </p>
+            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
-        {/* Content Section */}
-        <div className="p-5 flex flex-col ">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-active transition-colors duration-300 dark:text-white"></h2>
-          <p className="text-gray-600 mb-4 group-hover:text-gray-800 transition-colors duration-300 dark:text-white">
-            ...
-          </p>
-          <p className="text-gray-600 mb-4 group-hover:text-gray-800 transition-colors duration-300 dark:text-white">
-            description...
-          </p>
-          <div className="flex justify-between text-sm text-gray-500 mb-2 dark:text-white">
-            <p>Price : </p>
-            <p>Rating : </p>
-          </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-11/12 md:w-3/4 mx-auto">
+        {tutorials.map((tutorial) => (
+          <div
+            key={tutorial._id}
+            className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg border border-gray-200 flex items-start"
+          >
+            {/* Image Section */}
+            <div className="w-1/3">
+              <img
+                src={tutorial?.tutorialImage}
+                alt="Course Thumbnail"
+                className="w-full h-full object-cover rounded-l-lg"
+              />
+              {/* Duration Badge */}
+              <div className="absolute bg-yellow-500 text-white text-sm font-semibold px-3 py-1 rounded-md flex items-center top-2 left-2">
+                <FaClock className="mr-1" />
+                12 Weeks
+              </div>
+            </div>
 
-          <div className="text-sm flex justify-between text-gray-500 dark:text-white">
-            <p>Category : </p>
-            <p>Stock: </p>
+            {/* Content Section */}
+            <div className="w-2/3 p-4">
+              {/* Price */}
+              <p className="text-red-500 font-bold text-lg">
+                ${tutorial?.tutorialPrice}
+              </p>
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-gray-800 mb-2 text-justify">
+                {tutorial?.tutorialDescription.slice(0, 200)}....
+              </h3>
+              {/* Ratings */}
+              <div className="flex items-center text-yellow-500 mb-3">
+                {Array(5)
+                  .fill()
+                  .map((_, index) => (
+                    <svg
+                      key={index}
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path d="M9.049 2.927a1 1 0 011.902 0l1.292 3.946a1 1 0 00.95.69h4.14a1 1 0 01.592 1.806l-3.36 2.44a1 1 0 00-.364 1.118l1.293 3.947a1 1 0 01-1.537 1.118L10 13.011l-3.365 2.444a1 1 0 01-1.537-1.118l1.293-3.947a1 1 0 00-.364-1.118l-3.36-2.44a1 1 0 01.592-1.806h4.14a1 1 0 00.95-.69l1.292-3.946z" />
+                    </svg>
+                  ))}
+                <span className="text-gray-600 text-sm ml-2">
+                  {tutorial?.tutorialRating}
+                </span>
+              </div>
+              {/* Lessons and Students */}
+              <div className="flex items-center justify-between text-gray-600 text-sm">
+                <div>
+                  <img src={tutorial?.tutorImage} alt="tutor" />
+                  <div className="flex items-center">
+                    <FaUser className="mr-1" />
+                    {tutorial?.tutorName}
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <FaEye className="mr-1" />
+                  {tutorial?.review}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pr-5 md:-mt-5 lg:mt-10">
-          <button className="mb-3 ml-3 flex justify-center items-center  gap-2 px-4 py-2   rounded-full shadow-md  transition-all duration-300 bg-naBarBg text-white">
-            Learn More
-            <FaArrowRight />
-          </button>
-        </div>
+        ))}
       </div>
     </div>
   );
