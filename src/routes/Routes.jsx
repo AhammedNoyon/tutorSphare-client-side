@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <FindTutors></FindTutors>,
       },
       {
-        path: "tutor/:details",
+        path: "tutor/:id",
         element: (
           <PrivateRoutes>
             <TutorialDetails></TutorialDetails>

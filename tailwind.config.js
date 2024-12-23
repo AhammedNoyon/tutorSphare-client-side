@@ -7,6 +7,9 @@ export default {
       colors: {
         primaryColor: "#2BB881",
       },
+      backgroundImage: {
+        banner2: "url('/src/assets/banner/banner2.jpg')",
+      },
     },
   },
   // eslint-disable-next-line no-undef

@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
-  FaStar,
   FaClock,
   FaBook,
   FaUser,
@@ -10,16 +9,25 @@ import {
 import { FiFacebook, FiTwitter, FiLinkedin } from "react-icons/fi";
 import { MdOutlineReviews } from "react-icons/md";
 import { SiNamebase } from "react-icons/si";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 import Swal from "sweetalert2";
 const TutorialDetails = () => {
   const { user } = useContext(AuthContext);
+  const { id } = useParams();
+  // console.log(id);
 
-  const location = useLocation();
-  const tutorialData = location.state;
   const navigate = useNavigate();
+  const [tutorialData, setTutorialData] = useState({});
+  useEffect(() => {
+    axios.get(`http://localhost:5000/tutorials/${id}`).then((res) => {
+      setTutorialData(res.data);
+    });
+  }, [id]);
+  console.log(tutorialData);
   ///=======>>> Booked tutor
   const handleBooked = async () => {
     const tutorId = tutorialData?._id;
@@ -62,7 +70,8 @@ const TutorialDetails = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/my-booked-tutors");
+      navigate("/my-booked-tutors", { state: { tutorId } });
+      // return <Navigate to="/my-booked-tutors" state={tutorId}></Navigate>;
     }
   };
 

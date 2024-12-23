@@ -101,7 +101,7 @@ const FindTutors = () => {
                   <span>{tutorial?.review}</span>
                 </div>
               </div>
-              <Link to="/tutor/:details" state={tutorial}>
+              <Link to={`/tutor/${tutorial?._id}`}>
                 <button className="w-full bg-gradient-to-r from-primaryColor/60 to-primaryColor/70 text-white py-2 px-4 rounded-md shadow-lg hover:bg-primaryColor  transition duration-300 ">
                   See Details
                 </button>

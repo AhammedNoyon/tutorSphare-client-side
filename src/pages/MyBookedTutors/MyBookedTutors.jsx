@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 
 const MyBookedTutors = () => {
   const { user } = useContext(AuthContext);
   const [allBooked, setAllBooked] = useState([]);
+  // const location = useLocation();
+  // const tutorId = location.state;
+  // console.log(tutorId);
   useEffect(() => {
     axios
       .get(`http://localhost:5000/my-booked?email=${user?.email}`)
@@ -14,6 +17,14 @@ const MyBookedTutors = () => {
         setAllBooked(res.data);
       });
   }, [user?.email]);
+  ///=========>>>>> review update
+  // const handleReviewUpdate = async () => {
+  //   const { data } = await axios.post(
+  //     "http://localhost:5000/my-booked/update",
+  //     tutorId
+  //   );
+  //   console.log(data);
+  // };
   return (
     <div>
       <div
@@ -51,7 +62,7 @@ const MyBookedTutors = () => {
             className="group relative w-full max-w-7xl bg-white dark:bg-slate-800  rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 mx-auto"
           >
             {/* Image Section */}
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden border-b dark:border-none">
               <img
                 src={booked?.image}
                 alt="Card"
@@ -62,7 +73,7 @@ const MyBookedTutors = () => {
             </div> */}
             </div>
             {/* Content Section */}
-            <div className="p-5 md:h-[100px] glass flex flex-col">
+            <div className="p-5 md:h-[100px] dark:glass flex flex-col">
               <div className="flex gap-2 items-center ">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-active transition-colors duration-300 dark:text-white">
                   Language: {booked?.language}
@@ -75,7 +86,10 @@ const MyBookedTutors = () => {
                 Instructor : {booked?.tutorName}
               </p>
             </div>
-            <button className="mb-3 ml-3 flex items-center gap-2 px-4 py-2  rounded-full shadow-md  transition-all duration-300 glass dark:mt-5 dark:text-white">
+            <button
+              // onClick={handleReviewUpdate}
+              className="mb-3 ml-3 flex items-center gap-2 px-4 py-2  rounded-full shadow-md  transition-all duration-300 glass dark:mt-5 dark:text-white"
+            >
               <Link>Review </Link> <FaArrowRight />
             </button>
           </div>

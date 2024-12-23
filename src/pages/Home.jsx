@@ -1,5 +1,8 @@
+import CategoryCard from "../components/CategoryCard/CategoryCard";
+import LearAndGrouwth from "../components/LearnAndGrouwth/LearAndGrouwth";
 import Slider from "../components/Slider/Slider";
 import Status from "../components/Status/Status";
+import Testimonial from "../components/Testimonial/Testimonial";
 
 const Home = () => {
   return (
@@ -10,9 +13,15 @@ const Home = () => {
       <section className="bg-primaryColor dark:bg-[#111627]">
         <Status></Status>
       </section>
-      <section>category</section>
-      <section>one more</section>
-      <section>one more</section>
+      <section>
+        <CategoryCard></CategoryCard>
+      </section>
+      <section>
+        <LearAndGrouwth></LearAndGrouwth>
+      </section>
+      <section>
+        <Testimonial></Testimonial>
+      </section>
     </>
   );
 };

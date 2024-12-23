@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import loginAnimation from "../../assets/lottie/loginPage/login.json";
-import Lottie from "lottie-react";
+// import loginAnimation from "../../assets/lottie/loginPage/login.json";
+// import Lottie from "lottie-react";
 
 const Login = () => {
   const { signInByGoogle } = useContext(AuthContext);
@@ -68,9 +68,9 @@ const Login = () => {
         </div>
       </div>
       <div className=" grid grid-cols-2 w-11/12 md:w-3/4 mx-auto my-10 md:my-20">
-        <div className=" mx-auto   ">
+        {/* <div className=" mx-auto   ">
           <Lottie animationData={loginAnimation} loop={true}></Lottie>
-        </div>
+        </div> */}
         {/* Right Section */}
         <Outlet></Outlet>
       </div>
