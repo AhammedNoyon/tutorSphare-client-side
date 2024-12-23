@@ -13,7 +13,7 @@ const MyTutorials = () => {
   ///=========>>> load tutorials
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/tutorials?email=${user?.email}`)
+      .get(`https://b10-asm11-server.vercel.app/tutorials?email=${user?.email}`)
       .then((res) => {
         setTutorials(res.data);
       });
@@ -31,7 +31,9 @@ const MyTutorials = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // delete not successfully and not implement await
-        const { data } = axios.delete(`http://localhost:5000/tutorials/${id}`);
+        const { data } = axios.delete(
+          `https://b10-asm11-server.vercel.app/tutorials/${id}`
+        );
         if (data.deletedCount === 1) {
           Swal.fire({
             title: "Deleted!",
@@ -51,7 +53,7 @@ const MyTutorials = () => {
     const updateInfoConvertObj = Object.fromEntries(updateInfo.entries());
     console.log(updateInfoConvertObj);
     const { data } = await axios.put(
-      `http://localhost:5000/tutorials/${id}`,
+      `https://b10-asm11-server.vercel.app/tutorials/${id}`,
       updateInfoConvertObj
     );
     if (data.modifiedCount === 1) {

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
   FaStar,
   FaClock,
@@ -9,10 +10,61 @@ import {
 import { FiFacebook, FiTwitter, FiLinkedin } from "react-icons/fi";
 import { MdOutlineReviews } from "react-icons/md";
 import { SiNamebase } from "react-icons/si";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 const TutorialDetails = () => {
+  const { user } = useContext(AuthContext);
+
   const location = useLocation();
   const tutorialData = location.state;
+  const navigate = useNavigate();
+  ///=======>>> Booked tutor
+  const handleBooked = async () => {
+    const tutorId = tutorialData?._id;
+    const image = tutorialData?.tutorialImage;
+    const language = tutorialData?.tutorialLanguage;
+    const price = tutorialData?.tutorialPrice;
+    const tutorEmail = tutorialData?.tutorEmail;
+    const bookedUserEmail = user?.email;
+    const bookedUserName = user?.displayName;
+    const tutorName = tutorialData?.tutorName;
+
+    if (user?.email === tutorEmail) {
+      return Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Booked Not Permitted For Tutor",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    const bookedTutorInfo = {
+      tutorId,
+      image,
+      language,
+      tutorEmail,
+      price,
+      bookedUserEmail,
+      bookedUserName,
+      tutorName,
+    };
+    const { data } = await axios.post(
+      "http://localhost:5000/my-booked",
+      bookedTutorInfo
+    );
+    if (data.insertedId) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Booked successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/my-booked-tutors");
+    }
+  };
 
   return (
     <div>
@@ -110,7 +162,10 @@ const TutorialDetails = () => {
               <p className="text-2xl text-error font-bold mb-2">
                 ${tutorialData?.tutorialPrice}
               </p>
-              <button className="w-full bg-teal-500 text-white py-2 rounded-lg hover:bg-teal-600 transition">
+              <button
+                onClick={handleBooked}
+                className="w-full bg-teal-500 text-white py-2 rounded-lg hover:bg-teal-600 transition"
+              >
                 Book Now
               </button>
             </div>

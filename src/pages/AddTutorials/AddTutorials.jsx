@@ -14,11 +14,11 @@ const AddTutorials = () => {
     tutorialObjectData.review = 0;
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/tutorials",
+        "https://b10-asm11-server.vercel.app/tutorials",
         tutorialObjectData
       );
       if (data.insertedId) {
-        return Swal.fire({
+        Swal.fire({
           position: "center",
           icon: "success",
           title: "Tutorial added successfully",

@@ -42,7 +42,7 @@ const LoginForm = () => {
       });
   };
   return (
-    <div className=" bg-gradient-to-br from-purple-600 to-pink-500 flex flex-col justify-center items-center px-6 md:px-12">
+    <div className=" bg-gradient-to-br from-primaryColor to-error flex flex-col justify-center items-center px-6 md:px-12">
       <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 text-center">
         Sign Into Your Account
       </h2>
