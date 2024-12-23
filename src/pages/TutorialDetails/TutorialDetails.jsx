@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 const TutorialDetails = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
+
   // console.log(id);
 
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const TutorialDetails = () => {
       setTutorialData(res.data);
     });
   }, [id]);
-  console.log(tutorialData);
+
   ///=======>>> Booked tutor
   const handleBooked = async () => {
     const tutorId = tutorialData?._id;
@@ -77,23 +78,19 @@ const TutorialDetails = () => {
 
   return (
     <div>
-      <div
-        className="hero min-h-[400px]"
-        style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-        }}
-      >
+      <div className="hero min-h-[400px] lg:min-h-[500px] bg-detailsBanner ">
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+          <div className="md:max-w-xl lg:max-w-2xl">
+            <h1 className="mb-5 text-5xl font-bold">
+              Explore Comprehensive Details to Make Informed and Confident
+              Decisions
+            </h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Dive deeper into the specifics and uncover valuable insights
+              tailored to your interests. Get all the information you need to
+              take the next step with confidence.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>
@@ -125,27 +122,27 @@ const TutorialDetails = () => {
               <li className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center ">
                   <SiNamebase className="mr-2 text-gray-500 dark:text-gray-300" />{" "}
-                  Name:
+                  Course :
                 </span>
-                <span>*******</span>
+                <span>{tutorialData?.CourseName}</span>
               </li>
               <li className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <FaClock className="mr-2 text-gray-500" /> Duration:
                 </span>
-                <span>15 weeks</span>
+                <span>{tutorialData?.duration}</span>
               </li>
               <li className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <FaBook className="mr-2 text-gray-500" /> Lessons:
                 </span>
-                <span>11</span>
+                <span>{tutorialData?.totalLesson}</span>
               </li>
               <li className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <FaUser className="mr-2 text-gray-500" /> Students:
                 </span>
-                <span>227</span>
+                <span>{tutorialData?.totalStudent}</span>
               </li>
               <li className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
@@ -164,7 +161,7 @@ const TutorialDetails = () => {
                   <FaCertificate className="mr-2 text-gray-500" />{" "}
                   Certification:
                 </span>
-                <span>Yes</span>
+                <span>{tutorialData.certification}</span>
               </li>
             </ul>
             <div className="mt-6">
@@ -196,7 +193,7 @@ const TutorialDetails = () => {
               Instructor Info{" "}
             </h3>
             <div className="w-16 h-16 rounded-full border-2 flex justify-center items-center mb-2">
-              tutor
+              <img src={tutorialData?.tutorImage} alt="" />
             </div>
             <h3 className="text-3xl font-bold dark:text-gray-300">
               {tutorialData?.tutorName}

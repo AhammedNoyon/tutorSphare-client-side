@@ -9,6 +9,9 @@ export default {
       },
       backgroundImage: {
         banner2: "url('/src/assets/banner/banner2.jpg')",
+        findTutorsBanner: "url('/src/assets/banner/banner4.jpg')",
+        detailsBanner: "url('/src/assets/banner/banner3.jpg')",
+        bookedBanner: "url('/src/assets/banner/banner5.jpg')",
       },
     },
   },

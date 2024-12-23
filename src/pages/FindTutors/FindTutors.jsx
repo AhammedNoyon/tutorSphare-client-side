@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaEye, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
 // import useAxiosPrivate from "../../hooks/useAxiosPrivate/useAxiosPrivate";
 
 const FindTutors = () => {
@@ -16,31 +17,46 @@ const FindTutors = () => {
   }, []);
   return (
     <div>
-      <div
-        className="hero min-h-[400px]"
-        style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-        }}
-      >
+      <div className="hero min-h-[400px] lg:min-h-[500px] bg-findTutorsBanner mt-5 ">
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-neutral-content text-center">
+        <div className="hero-content text-neutral-content text-center ">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <h1 className="mb-5 text-5xl font-bold">
+              Discover Your Perfect Tutor
+            </h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Browse through a wide range of expert tutors across various
+              subjects and find the perfect match to help you achieve your
+              learning goals. et a id nisi.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-11/12 md:w-3/4 mx-auto">
+      <div className="flex justify-between items-center w-11/12 md:w-3/4 mx-auto mt-10 md:mt-20">
+        <h3 className="text-2xl md:text-3xl lg:text-5xl font-semibold dark:text-white">
+          Connect with Experienced Tutors
+        </h3>
+        <label className="input input-bordered flex items-center gap-2 w-fit dark:bg-gray-400 dark:border-gray-300">
+          <input type="text" className="grow " placeholder="Search" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="h-6 w-6 opacity-70 dark:text-white "
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </label>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-11/12 md:w-3/4 mx-auto mb-10 md:mb-20 mt-10">
         {tutorials.map((tutorial) => (
           <div
             key={tutorial._id}
-            className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg border border-gray-200 flex flex-col lg:flex-row items-start"
+            className="max-w-2xl mx-auto bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-none flex flex-col lg:flex-row items-start "
           >
             {/* Image Section */}
             <div className="lg:w-1/3">
@@ -57,13 +73,13 @@ const FindTutors = () => {
             </div>
 
             {/* Content Section */}
-            <div className="w-full lg:w-2/3 p-4">
+            <div className="w-full lg:w-2/3 p-4 flex flex-col">
               {/* Price */}
               <p className="text-red-500 font-bold text-lg">
                 ${tutorial?.tutorialPrice}
               </p>
               {/* Title */}
-              <h3 className="text-lg font-semibold text-gray-800 mb-2 text-justify">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2 text-justify dark:text-white">
                 {tutorial?.tutorialDescription.slice(0, 200)}....
               </h3>
               {/* Ratings */}
@@ -74,31 +90,31 @@ const FindTutors = () => {
                     <svg
                       key={index}
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
+                      className="h-5 w-5 "
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
                       <path d="M9.049 2.927a1 1 0 011.902 0l1.292 3.946a1 1 0 00.95.69h4.14a1 1 0 01.592 1.806l-3.36 2.44a1 1 0 00-.364 1.118l1.293 3.947a1 1 0 01-1.537 1.118L10 13.011l-3.365 2.444a1 1 0 01-1.537-1.118l1.293-3.947a1 1 0 00-.364-1.118l-3.36-2.44a1 1 0 01.592-1.806h4.14a1 1 0 00.95-.69l1.292-3.946z" />
                     </svg>
                   ))}
-                <span className="text-gray-600 text-sm ml-2">
+                <span className="text-gray-600 text-sm ml-2 dark:text-gray-300">
                   {tutorial?.tutorialRating}
                 </span>
               </div>
               {/* Lessons and Students */}
-              <div className="flex items-center justify-between text-gray-600 text-sm">
+              <div className="flex items-center justify-between text-gray-600 text-sm mb-5">
                 <div>
                   <div className="w-16 h-16 rounded-full border-2">
                     <img src={tutorial?.tutorImage} alt="tutor" />
                   </div>
-                  <div className="flex items-center text-xl font-bold my-2">
+                  <div className="flex items-center text-xl font-bold my-2 dark:text-white">
                     <FaUser className="mr-1" />
                     {tutorial?.tutorName}
                   </div>
                 </div>
                 <div className="flex items-center text-lg">
-                  <FaEye className="mr-1" />
-                  <span>{tutorial?.review}</span>
+                  <FaEye className="mr-1 dark:text-gray-300" />
+                  <span className="text-gray-300">{tutorial?.review}</span>
                 </div>
               </div>
               <Link to={`/tutor/${tutorial?._id}`}>

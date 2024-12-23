@@ -27,23 +27,19 @@ const MyBookedTutors = () => {
   // };
   return (
     <div>
-      <div
-        className="hero min-h-[400px]"
-        style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-        }}
-      >
+      <div className="hero min-h-[400px] lg:min-h-[500px] bg-bookedBanner mt-5 ">
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+        <div className="hero-content text-neutral-content text-center ">
+          <div className="md:max-w-md lg:max-w-2xl">
+            <h1 className="mb-5 text-2xl md:text-5xl font-bold">
+              Explore and Manage All Your Booked Tutorials in One Convenient
+              Location
+            </h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Keep track of the tutorials you’ve booked and access them anytime
+              to continue your learning journey. Stay organized and unlock new
+              opportunities to grow.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>

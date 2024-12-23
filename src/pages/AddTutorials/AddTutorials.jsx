@@ -32,23 +32,17 @@ const AddTutorials = () => {
   };
   return (
     <div>
-      <div
-        className="hero min-h-[400px]"
-        style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
+      <div className="hero min-h-[400px] mt-5">
+        <div className="hero-overlay bg-[#EAF0F2] dark:bg-slate-800 "></div>
         <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+          <div className=" md:max-w-xl lg:max-w-2xl">
+            <h1 className="mb-5 text-2xl md:text-3xl lg:text-5xl font-bold text-slate-800 dark:text-white">
+              Empower Students by Sharing Your Knowledge and Expertise
+            </h1>
+            <p className="mb-5 text-slate-800 dark:text-gray-300">
+              Join our platform and help students achieve their goals by sharing
+              your knowledge and skills. Start your journey as a tutor today!
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>
@@ -76,46 +70,60 @@ const AddTutorials = () => {
         <div className="lg:col-span-2">
           <form onSubmit={handleAddTutorial} className="space-y-6 ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {/* Name */}
+              {/* TutorName */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Name
+                  Tutor Name
                 </label>
                 <input
                   type="text"
                   name="tutorName"
                   defaultValue={user?.displayName}
                   readOnly
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                   placeholder="Your Name"
                 />
               </div>
-
-              {/* Email */}
+              {/* courseName */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Email
+                  Course Name
+                </label>
+                <input
+                  type="text"
+                  name="CourseName"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                  placeholder="Course Name"
+                />
+              </div>
+
+              {/* tutorEmail */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  tutor Email
                 </label>
                 <input
                   type="email"
                   name="tutorEmail"
                   defaultValue={user?.email}
                   readOnly
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                   placeholder="Your Email"
                 />
               </div>
-              {/* Image */}
+              {/* TutorImage */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  image
+                  Tutor image
                 </label>
                 <input
                   type="url"
-                  name="tutorialImage"
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
-                  placeholder="Tutorial image url"
+                  name="tutorImage"
+                  defaultValue={user?.photoURL}
+                  readOnly
+                  disabled
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                  placeholder="Tutor image url"
                 />
               </div>
               {/* Language */}
@@ -131,7 +139,19 @@ const AddTutorials = () => {
                   placeholder="Tutorial Language"
                 />
               </div>
-
+              {/* TutorialImage */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Tutorial image
+                </label>
+                <input
+                  type="url"
+                  name="tutorialImage"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white "
+                  placeholder="Tutorial image url"
+                />
+              </div>
               {/* Price */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
@@ -141,11 +161,11 @@ const AddTutorials = () => {
                   type="number"
                   name="tutorialPrice"
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                   placeholder="Price"
                 />
               </div>
-              {/* review */}
+              {/* Rating */}
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Rating
@@ -154,8 +174,60 @@ const AddTutorials = () => {
                   type="number"
                   name="review"
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                   placeholder="tutorialRating"
+                />
+              </div>
+              {/* Duration */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Duration
+                </label>
+                <input
+                  type="text"
+                  name="duration"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                  placeholder="Also mention Weeks/month/years"
+                />
+              </div>
+              {/* total Lesson */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Total Lesson
+                </label>
+                <input
+                  type="number"
+                  name="totalLesson"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                  placeholder="Total Lesson"
+                />
+              </div>
+              {/* Total student */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Total Student
+                </label>
+                <input
+                  type="number"
+                  name="totalStudent"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                  placeholder="How many are there now?"
+                />
+              </div>
+              {/* certification */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Certification
+                </label>
+                <input
+                  type="text"
+                  name="certification"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                  placeholder="Yes or No"
                 />
               </div>
             </div>
@@ -167,7 +239,7 @@ const AddTutorials = () => {
               </label>
               <textarea
                 name="tutorialDescription"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                 rows="4"
                 placeholder="Tutorial Description"
                 required
