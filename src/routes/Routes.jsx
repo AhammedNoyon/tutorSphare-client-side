@@ -11,6 +11,7 @@ import MyTutorials from "../pages/MyTutorials/MyTutorials";
 import PrivateRoutes from "../Private/PrivateRoutes";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import TutorialDetails from "../pages/TutorialDetails/TutorialDetails";
+import Category from "../pages/Category/Category";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "find-tutors",
         element: <FindTutors></FindTutors>,
+      },
+      {
+        path: "find-tutors/:id",
+        element: (
+          <PrivateRoutes>
+            <Category></Category>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "tutor/:id",

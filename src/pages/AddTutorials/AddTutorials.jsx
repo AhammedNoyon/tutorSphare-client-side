@@ -84,18 +84,6 @@ const AddTutorials = () => {
                   placeholder="Your Name"
                 />
               </div>
-              {/* courseName */}
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Course Name
-                </label>
-                <input
-                  type="text"
-                  name="CourseName"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
-                  placeholder="Course Name"
-                />
-              </div>
 
               {/* tutorEmail */}
               <div className="space-y-2">
@@ -119,11 +107,22 @@ const AddTutorials = () => {
                 <input
                   type="url"
                   name="tutorImage"
-                  defaultValue={user?.photoURL}
-                  readOnly
-                  disabled
+                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                   placeholder="Tutor image url"
+                />
+              </div>
+              {/* courseName */}
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                  Course Name
+                </label>
+                <input
+                  type="text"
+                  name="CourseName"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                  placeholder="Course Name"
                 />
               </div>
               {/* Language */}
@@ -135,7 +134,7 @@ const AddTutorials = () => {
                   type="text"
                   name="tutorialLanguage"
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                   placeholder="Tutorial Language"
                 />
               </div>
@@ -172,7 +171,7 @@ const AddTutorials = () => {
                 </label>
                 <input
                   type="number"
-                  name="review"
+                  name="rating"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                   placeholder="tutorialRating"

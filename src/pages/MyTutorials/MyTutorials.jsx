@@ -113,7 +113,7 @@ const MyTutorials = () => {
                     </div>
                     <div>
                       <div className="font-bold dark:text-white">
-                        {tutorial?.tutorName}
+                        {tutorial?.CourseName}
                       </div>
                       <div className="text-sm opacity-50 dark:text-gray-100">
                         {tutorial?.tutorialLanguage}
@@ -150,48 +150,61 @@ const MyTutorials = () => {
                           className="space-y-6 "
                         >
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            {/* Name */}
+                            {/* TutorName */}
                             <div className="space-y-2">
                               <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                                Name
+                                Tutor Name
                               </label>
                               <input
                                 type="text"
-                                name="name"
-                                defaultValue={tutorial?.tutorName}
+                                name="tutorName"
+                                defaultValue={user?.displayName}
                                 readOnly
-                                disabled
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                                 placeholder="Your Name"
                               />
                             </div>
 
-                            {/* Email */}
+                            {/* tutorEmail */}
                             <div className="space-y-2">
                               <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                                Email
+                                tutor Email
                               </label>
                               <input
                                 type="email"
-                                name="email"
-                                defaultValue={tutorial?.tutorName}
+                                name="tutorEmail"
+                                defaultValue={user?.email}
                                 readOnly
-                                disabled
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                                 placeholder="Your Email"
                               />
                             </div>
-                            {/* Image */}
+                            {/* TutorImage */}
                             <div className="space-y-2">
                               <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                                image
+                                Tutor image
                               </label>
                               <input
-                                type="url"
-                                name="tutorialImage"
-                                defaultValue={tutorial?.tutorialImage}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
-                                placeholder="Tutorial photo url"
+                                type="text"
+                                name="tutorImage"
+                                defaultValue={user?.photoURL}
+                                readOnly
+                                disabled
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                                placeholder="Tutor image url"
+                              />
+                            </div>
+                            {/* courseName */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                                Course Name
+                              </label>
+                              <input
+                                type="text"
+                                name="CourseName"
+                                defaultValue={tutorial?.CourseName}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                                placeholder="Course Name"
                               />
                             </div>
                             {/* Language */}
@@ -203,11 +216,23 @@ const MyTutorials = () => {
                                 type="text"
                                 name="tutorialLanguage"
                                 defaultValue={tutorial?.tutorialLanguage}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-gray-300"
                                 placeholder="Tutorial Language"
                               />
                             </div>
-
+                            {/* TutorialImage */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                                Tutorial image
+                              </label>
+                              <input
+                                type="text"
+                                name="tutorialImage"
+                                defaultValue={tutorial?.tutorialImage}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white "
+                                placeholder="Tutorial image url"
+                              />
+                            </div>
                             {/* Price */}
                             <div className="space-y-2">
                               <label className="block text-sm font-medium text-gray-700 dark:text-white">
@@ -217,21 +242,73 @@ const MyTutorials = () => {
                                 type="number"
                                 name="tutorialPrice"
                                 defaultValue={tutorial?.tutorialPrice}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
                                 placeholder="Price"
                               />
                             </div>
-                            {/* Review */}
+                            {/* Rating */}
                             <div className="space-y-2">
                               <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                                Review
+                                Rating
                               </label>
                               <input
                                 type="number"
-                                name="review"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
-                                placeholder=" 0"
-                                disabled
+                                name="rating"
+                                defaultValue={tutorial?.rating}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                                placeholder="tutorialRating"
+                              />
+                            </div>
+                            {/* Duration */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                                Duration
+                              </label>
+                              <input
+                                type="text"
+                                name="duration"
+                                defaultValue={tutorial?.duration}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                                placeholder="Also mention Weeks/month/years"
+                              />
+                            </div>
+                            {/* total Lesson */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                                Total Lesson
+                              </label>
+                              <input
+                                type="number"
+                                name="totalLesson"
+                                defaultValue={tutorial?.totalLesson}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                                placeholder="Total Lesson"
+                              />
+                            </div>
+                            {/* Total student */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                                Total Student
+                              </label>
+                              <input
+                                type="number"
+                                name="totalStudent"
+                                defaultValue={tutorial?.totalStudent}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                                placeholder="How many are there now?"
+                              />
+                            </div>
+                            {/* certification */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                                Certification
+                              </label>
+                              <input
+                                type="text"
+                                name="certification"
+                                defaultValue={tutorial?.certification}
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-white"
+                                placeholder="Yes or No"
                               />
                             </div>
                           </div>
@@ -244,7 +321,7 @@ const MyTutorials = () => {
                             <textarea
                               name="tutorialDescription"
                               defaultValue={tutorial?.tutorialDescription}
-                              className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800"
+                              className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-primaryColor focus:outline-none dark:bg-slate-800 dark:text-gray-300"
                               rows="4"
                               placeholder="Tutorial Description"
                             ></textarea>

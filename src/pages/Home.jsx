@@ -10,7 +10,7 @@ const Home = () => {
       <section>
         <Slider></Slider>
       </section>
-      <section className="bg-primaryColor dark:bg-[#111627]">
+      <section className=" md:bg-gradient-to-r from-primaryColor via-primaryColor/70 to-primaryColor/90 md:dark:bg-gradient-to-r dark:from-slate-600 dark:to-slate-800">
         <Status></Status>
       </section>
       <section>

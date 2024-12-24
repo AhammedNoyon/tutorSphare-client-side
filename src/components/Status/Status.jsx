@@ -3,14 +3,14 @@ import { FaClipboardList, FaLanguage, FaStar, FaUsers } from "react-icons/fa";
 const Status = () => {
   return (
     <>
-      <div className="w-11/12 md:w-3/4 mx-auto py-10">
+      <div className="w-11/12 md:w-4/6 mx-auto py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
           {/* Tutors */}
-          <div className="flex items-center justify-between bg-gray-100 dark:bg-slate-800 dark:text-gray-300 p-6 rounded-lg shadow-md">
+          <div className="flex items-center justify-between  dark:bg-slate-800 dark:text-gray-300 p-6 rounded-lg border-r-2 bg-gradient-to-r from-primaryColor via-primaryColor/70 to-primaryColor/90 dark:bg-gradient-to-r dark:from-slate-600 dark:to-slate-800 ">
             <div className="flex items-center space-x-4">
               <FaUsers className="text-4xl text-blue-500" />
-              <div>
-                <h3 className="text-lg font-medium">Tutors</h3>
+              <div className="text-white">
+                <h3 className="text-2xl font-medium">Tutors</h3>
                 <p className="text-xl font-semibold">120</p>{" "}
                 {/* Replace with dynamic data */}
               </div>
@@ -18,11 +18,11 @@ const Status = () => {
           </div>
 
           {/* Reviews */}
-          <div className="flex items-center justify-between bg-gray-100 dark:bg-slate-800 dark:text-gray-300 p-6 rounded-lg shadow-md">
+          <div className="flex items-center justify-between  dark:bg-slate-800 dark:text-gray-300 p-6 rounded-lg border-r-2 bg-gradient-to-r from-primaryColor via-primaryColor/70 to-primaryColor/90 dark:bg-gradient-to-r dark:from-slate-600 dark:to-slate-800 ">
             <div className="flex items-center space-x-4">
               <FaStar className="text-4xl text-yellow-500" />
-              <div>
-                <h3 className="text-lg font-medium">Reviews</h3>
+              <div className="text-white">
+                <h3 className="text-2xl font-medium">Reviews</h3>
                 <p className="text-xl font-semibold">350</p>{" "}
                 {/* Replace with dynamic data */}
               </div>
@@ -30,11 +30,11 @@ const Status = () => {
           </div>
 
           {/* Languages */}
-          <div className="flex items-center justify-between bg-gray-100 dark:bg-slate-800 dark:text-gray-300 p-6 rounded-lg shadow-md">
+          <div className="flex items-center justify-between  dark:bg-slate-800 dark:text-gray-300 p-6 rounded-lg border-r-2 bg-gradient-to-r from-primaryColor via-primaryColor/70 to-primaryColor/90 dark:bg-gradient-to-r dark:from-slate-600 dark:to-slate-800 ">
             <div className="flex items-center space-x-4">
               <FaLanguage className="text-4xl text-green-500" />
-              <div>
-                <h3 className="text-lg font-medium">Languages</h3>
+              <div className="text-white">
+                <h3 className="text-2xl font-medium">Languages</h3>
                 <p className="text-xl font-semibold">15</p>{" "}
                 {/* Replace with dynamic data */}
               </div>
@@ -42,11 +42,11 @@ const Status = () => {
           </div>
 
           {/* Users */}
-          <div className="flex items-center justify-between bg-gray-100 dark:bg-slate-800 dark:text-gray-300 p-6 rounded-lg shadow-md">
+          <div className="flex items-center justify-between  dark:bg-slate-800 dark:text-gray-300 p-6 rounded-lg border-r-2 bg-gradient-to-r from-primaryColor via-primaryColor/70 to-primaryColor/90 dark:bg-gradient-to-r dark:from-slate-600 dark:to-slate-800 ">
             <div className="flex items-center space-x-4">
               <FaClipboardList className="text-4xl text-red-500" />
-              <div>
-                <h3 className="text-lg font-medium">Users</h3>
+              <div className="text-white">
+                <h3 className="text-2xl font-medium">Users</h3>
                 <p className="text-xl font-semibold">500</p>{" "}
                 {/* Replace with dynamic data */}
               </div>

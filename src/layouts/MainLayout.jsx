@@ -11,7 +11,7 @@ const MainLayout = () => {
       <main>
         <Outlet></Outlet>
       </main>
-      <footer className="bg-base-300 dark:bg-slate-800 text-base-content py-10">
+      <footer className="bg-[#EAF0F2] dark:bg-slate-800 text-base-content py-10">
         <Footer></Footer>
       </footer>
     </>

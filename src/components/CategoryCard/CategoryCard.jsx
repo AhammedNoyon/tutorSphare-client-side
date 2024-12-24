@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
 import { TbCategory } from "react-icons/tb";
+import { Link } from "react-router-dom";
 const CategoryCard = () => {
   const [tutorials, setTutorials] = useState([]);
   useEffect(() => {
@@ -22,7 +23,9 @@ const CategoryCard = () => {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
           {tutorials.map((tutorial) => (
-            <div
+            <Link
+              to={`/find-tutors/${tutorial?._id}`}
+              state={tutorial?.CourseName}
               key={tutorial._id}
               className={`p-6 rounded-lg shadow-md flex gap-4 items-center  justify-center bg-gradient-to-r from-primaryColor/20 to-error/20 dark:bg-gradient-to-r dark:from-slate-600 dark:to-slate-800 dark:text-white`}
             >
@@ -30,12 +33,12 @@ const CategoryCard = () => {
                 <TbCategory />
               </div>
               <h3 className="text-lg  lg:text-3xl ">
-                {tutorial?.tutorialLanguage} tutors
+                {tutorial?.CourseName} tutors
               </h3>
               <div className={`text-3xl mr-4 `}>
                 <FaArrowRightToBracket />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

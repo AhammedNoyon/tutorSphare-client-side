@@ -6,21 +6,24 @@ import banner5 from "../../assets/banner/banner5.jpg";
 const Slider = () => {
   return (
     <>
-      <div className="carousel w-full">
-        <div id="slide1" className="carousel-item relative w-full bg-[#EAF0F2]">
-          <div className="relative  py-16">
+      <div className="carousel w-full mt-5">
+        <div
+          id="slide1"
+          className="carousel-item relative w-full bg-[#EAF0F2] dark:bg-slate-800"
+        >
+          <div className="relative  pt-16">
             <div className="w-11/12 md:w-3/4 h-[500px] mx-auto flex flex-col-reverse lg:flex-row items-center lg:space-x-12 px-6">
               {/* Text Section */}
               <div className="lg:w-1/2 text-center lg:text-left mt-8 lg:mt-0">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-                  Get <span className="text-pink-500">2500+</span> Best Online
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 leading-tight dark:text-white">
+                  Get <span className="text-error">2500+</span> Best Online
                   Courses <br /> From EduBlink
                 </h1>
-                <p className="text-gray-500 mt-4">
+                <p className="text-gray-500 mt-4 dark:text-gray-400">
                   Excepteur sint occaecat cupidatat non proident sunt in culpa
                   qui officia deserunt mollit.
                 </p>
-                <button className="mt-6 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow-lg hover:bg-green-600">
+                <button className="mt-6 px-6 py-3 bg-primaryColor/80 text-white font-semibold rounded-lg shadow-lg hover:bg-primaryColor">
                   Find courses →
                 </button>
               </div>
@@ -34,7 +37,7 @@ const Slider = () => {
                   className="w-80 md:w-96 lg:w-full  rounded-lg "
                 />
                 {/* Badge Section */}
-                <div className="absolute bottom-8 right-8 bg-white p-4 rounded-lg shadow-lg flex items-center space-x-4">
+                <div className="absolute bottom-8 right-8 bg-white dark:bg-slate-800 p-4 rounded-lg shadow-lg flex items-center space-x-4">
                   <div className="flex -space-x-2">
                     <img
                       src="https://via.placeholder.com/50x50" // Replace with instructor images
@@ -53,8 +56,10 @@ const Slider = () => {
                     />
                   </div>
                   <div>
-                    <p className="text-gray-700 font-medium">Instructor</p>
-                    <p className="text-pink-500 font-bold text-sm">
+                    <p className="text-gray-700 font-medium dark:text-white">
+                      Instructor
+                    </p>
+                    <p className="text-error font-bold text-sm">
                       200+ Instructors
                     </p>
                   </div>
@@ -96,28 +101,31 @@ const Slider = () => {
             </a>
           </div>
         </div>
-        <div id="slide3" className="carousel-item relative w-full">
-          <section className="relative bg-gradient-to-r from-blue-50 to-purple-50 py-12 px-6 md:py-20 md:px-12 lg:flex lg:items-center">
+        <div
+          id="slide3"
+          className="carousel-item relative w-full bg-[#EAF0F2] dark:bg-slate-800"
+        >
+          <section className="relative  py-12  md:py-0 md:pt-10 lg:flex lg:items-center w-11/12 md:w-3/4 mx-auto">
             <div className="lg:w-1/2 space-y-6">
-              <h1 className="text-4xl font-bold text-gray-800 leading-snug md:text-5xl">
+              <h1 className="text-4xl font-bold text-gray-800 leading-snug md:text-5xl dark:text-white">
                 The Best Program to Enroll for Exchange
               </h1>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Excepteur sint occaecat cupidatat non proident sunt in culpa qui
                 officia deserunt mollit.
               </p>
-              <button className="mt-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-600 transition">
+              <button className="mt-6 bg-primaryColor/40 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-primaryColor transition dark:bg-primaryColor">
                 Find courses →
               </button>
               <div className="flex items-center gap-4 mt-6">
-                <div className="bg-white p-4 rounded-full shadow-md">
+                <div className="bg-white dark:bg-slate-600 p-4 rounded-full shadow-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6 text-pink-500"
+                    className="w-6 h-6 text-error"
                   >
                     <path
                       strokeLinecap="round"
@@ -127,42 +135,50 @@ const Slider = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-gray-800 font-bold">Online Support</p>
-                  <p className="text-pink-500 font-medium">+012 (345) 6789</p>
+                  <p className="text-gray-800 dark:text-gray-300 font-bold">
+                    Online Support
+                  </p>
+                  <p className="text-error font-medium">+012 (345) 6789</p>
                 </div>
               </div>
             </div>
 
             {/* Image Section */}
             <div className="lg:w-1/2 relative mt-8 lg:mt-0">
-              <div className="relative z-10">
+              <div className="relative z-10 lg:w-[350px] lg:h-[350px]">
                 <img
-                  src="https://via.placeholder.com/350x350" // Replace this with the main image URL
+                  src={banner3}
                   alt="Main Student"
-                  className="rounded-lg shadow-lg mx-auto lg:mx-0"
+                  className="rounded-lg shadow-lg mx-auto lg:mx-0 lg:ml-24 mt-20 lg:mt-14"
                 />
               </div>
-              <div className="absolute top-[-50px] left-[50px] hidden lg:block">
+              <div className="absolute top-[-50px] left-[50px] hidden lg:block w-[220px] h-[220px]">
                 <img
-                  src="https://via.placeholder.com/200x200" // Replace with the top-left image URL
+                  src={banner4}
                   alt="Student"
                   className="rounded-lg shadow-lg"
                 />
               </div>
-              <div className="absolute bottom-[-50px] right-[50px] hidden lg:block">
+              <div className="absolute bottom-[-50px] right-[50px] hidden lg:block w-[220px] h-[220px]">
                 <img
-                  src="https://via.placeholder.com/200x200" // Replace with the bottom-right image URL
+                  src={banner5}
                   alt="Student"
                   className="rounded-lg shadow-lg"
                 />
               </div>
             </div>
           </section>
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide2" className="btn btn-circle">
+          <div className="absolute left-5 right-5 top-[53%] md:top-[45%] lg:top-1/2 flex -translate-y-1/2 transform justify-between ">
+            <a
+              href="#slide2"
+              className="btn btn-circle dark:bg-slate-600 dark:border-none dark:text-white"
+            >
               ❮
             </a>
-            <a href="#slide1" className="btn btn-circle">
+            <a
+              href="#slide1"
+              className="btn btn-circle dark:bg-slate-600 dark dark:border-none dark:text-white"
+            >
               ❯
             </a>
           </div>

@@ -97,7 +97,7 @@ const FindTutors = () => {
                       <path d="M9.049 2.927a1 1 0 011.902 0l1.292 3.946a1 1 0 00.95.69h4.14a1 1 0 01.592 1.806l-3.36 2.44a1 1 0 00-.364 1.118l1.293 3.947a1 1 0 01-1.537 1.118L10 13.011l-3.365 2.444a1 1 0 01-1.537-1.118l1.293-3.947a1 1 0 00-.364-1.118l-3.36-2.44a1 1 0 01.592-1.806h4.14a1 1 0 00.95-.69l1.292-3.946z" />
                     </svg>
                   ))}
-                <span className="text-gray-600 text-sm ml-2 dark:text-gray-300">
+                <span className="text-gray-600 text-sm ml-2  dark:text-white">
                   {tutorial?.tutorialRating}
                 </span>
               </div>
