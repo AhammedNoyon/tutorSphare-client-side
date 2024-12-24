@@ -12,6 +12,7 @@ export default {
         findTutorsBanner: "url('/src/assets/banner/banner4.jpg')",
         detailsBanner: "url('/src/assets/banner/banner3.jpg')",
         bookedBanner: "url('/src/assets/banner/banner5.jpg')",
+        loginBanner: "url('/src/assets/banner/login.avif')",
       },
     },
   },

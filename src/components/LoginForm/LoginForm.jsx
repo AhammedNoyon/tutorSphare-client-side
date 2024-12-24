@@ -42,8 +42,8 @@ const LoginForm = () => {
       });
   };
   return (
-    <div className=" bg-gradient-to-br from-primaryColor to-error flex flex-col justify-center items-center px-6 md:px-12">
-      <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 text-center">
+    <div className="  flex flex-col ">
+      <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 text-center md:text-start">
         Sign Into Your Account
       </h2>
       <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
@@ -52,7 +52,7 @@ const LoginForm = () => {
           required
           type="email"
           placeholder="Email Address"
-          className="w-full px-4 py-2 border-b-2 bg-transparent text-white placeholder-gray-300 focus:outline-none"
+          className="w-full px-4 py-2 border-b-2 bg-transparent text-white placeholder-white focus:outline-none"
         />
         <div className="relative">
           <input
@@ -60,7 +60,7 @@ const LoginForm = () => {
             required
             type={eye ? "text" : "password"}
             placeholder="Password"
-            className="w-full px-4 py-2 border-b-2 bg-transparent text-white placeholder-gray-300 focus:outline-none "
+            className="w-full px-4 py-2 border-b-2 bg-transparent text-white placeholder-white focus:outline-none "
           />
           <div
             onClick={() => setEye(!eye)}
@@ -71,7 +71,7 @@ const LoginForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-red-500 py-2 rounded-md font-bold text-white hover:bg-red-600 transition"
+          className="w-full  py-2  rounded-md font-bold dark:text-white bg-primaryColor transition"
         >
           Login
         </button>

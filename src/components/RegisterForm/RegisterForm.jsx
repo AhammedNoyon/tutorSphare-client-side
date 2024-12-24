@@ -105,7 +105,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className=" bg-gradient-to-br from-primaryColor to-error flex flex-col justify-center items-center px-6 md:px-12">
+    <div className="  flex flex-col justify-center items-center ">
       <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 text-center">
         Register Into Your Account
       </h2>
