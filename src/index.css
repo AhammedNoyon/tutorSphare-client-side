@@ -12,3 +12,57 @@ a.active {
   background-color: none;
   color: #2bb881;
 }
+
+/* .swiper {
+  width: 340px;
+  height: 420px;
+} */
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+.swiper-slide:nth-child(1n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(2n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(3n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(4n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(5n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(6n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(7n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(8n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(9n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(10n) {
+  background-color: rgb(54, 94, 77);
+}

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const [eye, setEye] = useState(false);
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, redirectPath } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,7 +28,7 @@ const LoginForm = () => {
             timer: 1500,
           });
           form.reset();
-          navigate(location.pathname || "/");
+          navigate(redirectPath);
         }
       })
       .catch((error) => {

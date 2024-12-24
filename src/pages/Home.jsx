@@ -1,5 +1,6 @@
 import CategoryCard from "../components/CategoryCard/CategoryCard";
 import LearAndGrouwth from "../components/LearnAndGrouwth/LearAndGrouwth";
+import RightTutor from "../components/RightTutor/RightTutor";
 import Slider from "../components/Slider/Slider";
 import Status from "../components/Status/Status";
 import Testimonial from "../components/Testimonial/Testimonial";
@@ -16,7 +17,10 @@ const Home = () => {
       <section>
         <CategoryCard></CategoryCard>
       </section>
-      <section>
+      <section className="my-10 md:my-20 ">
+        <RightTutor></RightTutor>
+      </section>
+      <section className="mt-12">
         <LearAndGrouwth></LearAndGrouwth>
       </section>
       <section>

@@ -9,7 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../firebase/firebase.init";
-import { data } from "react-router-dom";
+
 import axios from "axios";
 
 export const AuthContext = createContext();
@@ -17,6 +17,12 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [redirectPath, setRedirectPath] = useState("");
+  ///=======>>>>accept pathname for login
+  const redirectWithLogin = (path) => {
+    setRedirectPath(path);
+  };
+
   // google sign in
   const googleProvider = new GoogleAuthProvider();
 
@@ -89,6 +95,8 @@ const AuthProvider = ({ children }) => {
     signInUser,
     manageUserProfile,
     logoutUser,
+    redirectWithLogin,
+    redirectPath,
   };
 
   return (

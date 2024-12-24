@@ -8,6 +8,7 @@ const RegisterForm = () => {
   const [eye, setEye] = useState(false);
   const { manageUserProfile, registerUpUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -88,9 +89,9 @@ const RegisterForm = () => {
                 timer: 1500,
               });
             });
+          form.reset();
+          navigate("/");
         }
-        form.reset();
-        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;

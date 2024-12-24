@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -7,9 +7,16 @@ import Swal from "sweetalert2";
 // import Lottie from "lottie-react";
 
 const Login = () => {
+  const { redirectWithLogin } = useContext(AuthContext);
   const { signInByGoogle } = useContext(AuthContext);
+  const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+
+  const from = location?.state || "/";
+
+  useEffect(() => {
+    redirectWithLogin(from);
+  }, [redirectWithLogin, from]);
   //google login
   const handleGoogleLogin = () => {
     signInByGoogle()
@@ -24,6 +31,7 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate(from);
         }
       })
       .catch((error) => {
@@ -39,7 +47,7 @@ const Login = () => {
   };
   return (
     <>
-      <div className="bg-loginBanner py-32 lg:py-52">
+      <div className="bg-loginBanner py-32 lg:py-52 mt-5">
         <div className="w-11/12 md:w-3/4 mx-auto flex flex-col lg:flex-row justify-center">
           {/* Left Section */}
           <div className="">
