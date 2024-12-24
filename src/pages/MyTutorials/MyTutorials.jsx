@@ -35,6 +35,9 @@ const MyTutorials = () => {
           `https://b10-asm11-server.vercel.app/tutorials/${id}`
         );
         if (data.deletedCount === 1) {
+          setTutorials((prevTutorials) =>
+            prevTutorials.filter((tutorial) => tutorial._id !== id)
+          );
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -51,7 +54,6 @@ const MyTutorials = () => {
     event.preventDefault();
     const updateInfo = new FormData(event.target);
     const updateInfoConvertObj = Object.fromEntries(updateInfo.entries());
-    console.log(updateInfoConvertObj);
     const { data } = await axios.put(
       `https://b10-asm11-server.vercel.app/tutorials/${id}`,
       updateInfoConvertObj

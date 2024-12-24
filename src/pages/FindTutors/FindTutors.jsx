@@ -7,14 +7,18 @@ import { Link } from "react-router-dom";
 
 const FindTutors = () => {
   const [tutorials, setTutorials] = useState([]);
+  const [search, setSearch] = useState("");
   // const axiosPrivateInstance = useAxiosPrivate();
   useEffect(() => {
     // const { data } = axios.get("http://localhost:5000/tutorials");
     // console.log(data);
-    axios.get("https://b10-asm11-server.vercel.app/tutorials").then((res) => {
-      setTutorials(res.data);
-    });
-  }, []);
+    axios
+      .get(`http://localhost:5000/tutorials?search=${search}`)
+      .then((res) => {
+        setTutorials(res.data);
+      });
+  }, [search]);
+  // console.log(search);
   return (
     <div>
       <div className="hero min-h-[400px] lg:min-h-[500px] bg-findTutorsBanner mt-5 ">
@@ -32,12 +36,17 @@ const FindTutors = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center w-11/12 md:w-3/4 mx-auto mt-10 md:mt-20">
-        <h3 className="text-2xl md:text-3xl lg:text-5xl font-semibold dark:text-white">
+      <div className="flex flex-col md:flex-row justify-between items-center w-11/12 md:w-3/4 mx-auto mt-10 md:mt-20">
+        <h3 className="text-2xl md:text-3xl lg:text-5xl font-semibold dark:text-white mb-3 md:mb-0">
           Connect with Experienced Tutors
         </h3>
-        <label className="input input-bordered flex items-center gap-2 w-fit dark:bg-gray-400 dark:border-gray-300">
-          <input type="text" className="grow " placeholder="Search" />
+        <div className="input input-bordered flex items-center gap-2 w-fit dark:bg-gray-400 dark:border-gray-300">
+          <input
+            onBlur={(e) => setSearch(e.target.value)}
+            type="text"
+            className="grow "
+            placeholder="Search"
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -50,7 +59,7 @@ const FindTutors = () => {
               clipRule="evenodd"
             />
           </svg>
-        </label>
+        </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-11/12 md:w-3/4 mx-auto mb-10 md:mb-20 mt-10">
         {tutorials.map((tutorial) => (
@@ -79,6 +88,10 @@ const FindTutors = () => {
                 ${tutorial?.tutorialPrice}
               </p>
               {/* Title */}
+              <h3 className="text-2xl font-semibold dark:text-white my-2">
+                {tutorial?.CourseName}
+              </h3>
+              {/* description */}
               <h3 className="text-lg font-semibold text-gray-800 mb-2 text-justify dark:text-white">
                 {tutorial?.tutorialDescription.slice(0, 200)}....
               </h3>
