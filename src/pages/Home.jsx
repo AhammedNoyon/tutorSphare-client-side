@@ -1,5 +1,7 @@
+import AboutUs from "../components/About/AboutUs";
 import CategoryCard from "../components/CategoryCard/CategoryCard";
 import LearAndGrouwth from "../components/LearnAndGrouwth/LearAndGrouwth";
+import PopularCourse from "../components/PopularCourse/PopularCourse";
 import RightTutor from "../components/RightTutor/RightTutor";
 import Slider from "../components/Slider/Slider";
 import Status from "../components/Status/Status";
@@ -17,14 +19,18 @@ const Home = () => {
       <section>
         <CategoryCard></CategoryCard>
       </section>
+
       <section className="my-10 md:my-20 ">
         <RightTutor></RightTutor>
       </section>
       <section className="mt-12">
         <LearAndGrouwth></LearAndGrouwth>
       </section>
-      <section>
+      <section className="my-10 md:my-20">
         <Testimonial></Testimonial>
+      </section>
+      <section className="my-10 md:my-20 dark:bg-slate-800">
+        <AboutUs></AboutUs>
       </section>
     </>
   );
