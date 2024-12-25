@@ -3,6 +3,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MyBookedTutors = () => {
   const { user } = useContext(AuthContext);
@@ -17,14 +18,21 @@ const MyBookedTutors = () => {
         setAllBooked(res.data);
       });
   }, [user?.email]);
-  ///=========>>>>> review update
-  // const handleReviewUpdate = async () => {
-  //   const { data } = await axios.post(
-  //     "http://localhost:5000/my-booked/update",
-  //     tutorId
-  //   );
-  //   console.log(data);
-  // };
+  // /=========>>>>> review update
+  const handleReviewUpdate = async (id) => {
+    // console.log(id);
+    const { data } = await axios.post(`http://localhost:5000/my-booked/${id}`);
+    // console.log(data);
+    if (data.modifiedCount === 1) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Review successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
   return (
     <div>
       <div className="hero min-h-[400px] lg:min-h-[500px] bg-bookedBanner mt-5 ">
@@ -69,10 +77,10 @@ const MyBookedTutors = () => {
             </div> */}
             </div>
             {/* Content Section */}
-            <div className="p-5 md:h-[100px] dark:glass flex flex-col">
+            <div className="p-5 md:h-[130px] dark:glass flex flex-col">
               <div className="flex gap-2 items-center ">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-active transition-colors duration-300 dark:text-white">
-                  Language: {booked?.language}
+                  CourseName: {booked?.CourseName}
                 </h2>
                 <div className="bg-error px-3 rounded-3xl flex justify-center items-center text-white -mt-5 py-2 dark:bg-slate-800">
                   ${booked?.price}
@@ -83,8 +91,8 @@ const MyBookedTutors = () => {
               </p>
             </div>
             <button
-              // onClick={handleReviewUpdate}
-              className="mb-3 ml-3 flex items-center gap-2 px-4 py-2  rounded-full shadow-md  transition-all duration-300 glass dark:mt-5 dark:text-white"
+              onClick={() => handleReviewUpdate(booked?.tutorId)}
+              className="mb-3 ml-3 flex items-center gap-2 px-4 py-2  rounded-full shadow-md  transition-all duration-300 glass md:mt-5 dark:text-white bg-primaryColor dark:bg-gray-600"
             >
               <Link>Review </Link> <FaArrowRight />
             </button>

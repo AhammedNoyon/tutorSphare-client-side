@@ -17,9 +17,27 @@ const Category = () => {
   console.log(categoryTutorials);
   return (
     <div>
+      <div className="hero min-h-[400px] mt-5">
+        <div className="hero-overlay bg-[#EAF0F2] dark:bg-slate-800 "></div>
+        <div className="hero-content text-neutral-content text-center">
+          <div className=" md:max-w-xl lg:max-w-2xl">
+            <h1 className="mb-5 text-2xl md:text-3xl lg:text-5xl font-bold text-slate-800 dark:text-white">
+              Explore a Wide Range of Categories to Find Your Perfect Online
+              Tutor
+            </h1>
+            <p className="mb-5 text-slate-800 dark:text-gray-300">
+              Discover a diverse range of tutoring options tailored to meet your
+              learning goals. Whether you're looking to master a new language,
+              excel in academics, or develop professional skills, our
+              experienced tutors are here to guide you. Browse through our
+              categories and find the perfect match for your needs
+            </p>
+          </div>
+        </div>
+      </div>
       <h3 className="mt-10 md:mt-20 w-11/12 md:w-3/4 mx-auto mb-8  dark:text-white flex items-center gap-2">
         <span className="text-2xl md:text-3xl lg:text-4xl font-bold">
-          My Booked Tutors
+          Connect with Category Tutors
         </span>{" "}
         <span className="bg-primaryColor px-2 py-1 text-lg font-bold flex justify-center items-center rounded-full text-white">
           ({categoryTutorials.length})

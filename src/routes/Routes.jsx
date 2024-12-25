@@ -12,6 +12,7 @@ import PrivateRoutes from "../Private/PrivateRoutes";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import TutorialDetails from "../pages/TutorialDetails/TutorialDetails";
 import Category from "../pages/Category/Category";
+import UpdateMyTutorials from "../pages/UpdateMyTutorials/UpdateMyTutorials";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
         element: <FindTutors></FindTutors>,
       },
       {
-        path: "find-tutors/:id",
+        path: "find-tutor/:id",
         element: (
           <PrivateRoutes>
             <Category></Category>
@@ -57,6 +58,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <MyTutorials></MyTutorials>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "update-tutorials/:id",
+        element: (
+          <PrivateRoutes>
+            <UpdateMyTutorials></UpdateMyTutorials>
           </PrivateRoutes>
         ),
       },

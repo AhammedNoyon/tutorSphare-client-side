@@ -87,10 +87,17 @@ const FindTutors = () => {
               <p className="text-red-500 font-bold text-lg">
                 ${tutorial?.tutorialPrice}
               </p>
-              {/* Title */}
-              <h3 className="text-2xl font-semibold dark:text-white my-2">
-                {tutorial?.CourseName}
-              </h3>
+              {/* Title and review*/}
+              <div className="flex items-center gap-2">
+                <h3 className="text-2xl font-semibold dark:text-white my-2">
+                  {tutorial?.CourseName}
+                </h3>
+                <div className="flex items-center text-lg -mt-5 border-2 py-1 px-3 bg-primaryColor text-white rounded-xl">
+                  {" "}
+                  <FaEye className="mr-2 dark:text-gray-300" />
+                  <span className="dark:text-gray-300">{tutorial?.review}</span>
+                </div>
+              </div>
               {/* description */}
               <h3 className="text-lg font-semibold text-gray-800 mb-2 text-justify dark:text-white">
                 {tutorial?.tutorialDescription.slice(0, 200)}....
@@ -111,7 +118,7 @@ const FindTutors = () => {
                     </svg>
                   ))}
                 <span className="text-gray-600 text-sm ml-2  dark:text-white">
-                  {tutorial?.tutorialRating}
+                  {tutorial?.rating}
                 </span>
               </div>
               {/* Lessons and Students */}
@@ -124,10 +131,6 @@ const FindTutors = () => {
                     <FaUser className="mr-1" />
                     {tutorial?.tutorName}
                   </div>
-                </div>
-                <div className="flex items-center text-lg">
-                  <FaEye className="mr-1 dark:text-gray-300" />
-                  <span className="text-gray-300">{tutorial?.review}</span>
                 </div>
               </div>
               <Link to={`/tutor/${tutorial?._id}`}>

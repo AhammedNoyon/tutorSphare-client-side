@@ -14,7 +14,7 @@ const AddTutorials = () => {
     tutorialObjectData.review = 0;
     try {
       const { data } = await axios.post(
-        "https://b10-asm11-server.vercel.app/tutorials",
+        "http://localhost:5000/tutorials",
         tutorialObjectData
       );
       if (data.insertedId) {

@@ -19,21 +19,41 @@ const TutorialDetails = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
 
-  // console.log(id);
+  console.log(id);
 
   const navigate = useNavigate();
   const [tutorialData, setTutorialData] = useState({});
-  useEffect(() => {
-    axios.get(`http://localhost:5000/tutorials/${id}`).then((res) => {
-      setTutorialData(res.data);
-    });
-  }, [id]);
+  const {
+    tutorialImage,
+    CourseName,
+    duration,
+    totalLesson,
+    totalStudent,
+    review,
+    tutorialLanguage,
+    certification,
+    tutorialPrice,
+    tutorImage,
+    tutorName,
+    tutorialDescription,
+  } = tutorialData;
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/tutorial?id=${id}`)
+      .then((res) => {
+        setTutorialData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
+  console.log(tutorialData);
   ///=======>>> Booked tutor
   const handleBooked = async () => {
     const tutorId = tutorialData?._id;
     const image = tutorialData?.tutorialImage;
-    const language = tutorialData?.tutorialLanguage;
+    const CourseName = tutorialData?.CourseName;
     const price = tutorialData?.tutorialPrice;
     const tutorEmail = tutorialData?.tutorEmail;
     const bookedUserEmail = user?.email;
@@ -52,27 +72,38 @@ const TutorialDetails = () => {
     const bookedTutorInfo = {
       tutorId,
       image,
-      language,
+      CourseName,
       tutorEmail,
       price,
       bookedUserEmail,
       bookedUserName,
       tutorName,
     };
-    const { data } = await axios.post(
-      "http://localhost:5000/my-booked",
-      bookedTutorInfo
-    );
-    if (data.insertedId) {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/my-booked",
+        bookedTutorInfo
+      );
+      if (data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Booked successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/my-booked-tutors", { state: { tutorId } });
+        // return <Navigate to="/my-booked-tutors" state={tutorId}></Navigate>;
+      }
+    } catch (err) {
+      // console.log(err?.response?.data);
       Swal.fire({
         position: "center",
-        icon: "success",
-        title: "Booked successfully",
+        icon: "error",
+        title: err?.response?.data?.message,
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/my-booked-tutors", { state: { tutorId } });
-      // return <Navigate to="/my-booked-tutors" state={tutorId}></Navigate>;
     }
   };
 
@@ -107,7 +138,7 @@ const TutorialDetails = () => {
             <div className="h-[400px]">
               <img
                 className="w-full md:h-[400px] object-cover "
-                src={tutorialData?.tutorialImage}
+                src={tutorialImage}
                 alt=""
               />
             </div>
@@ -118,55 +149,55 @@ const TutorialDetails = () => {
             <h2 className="text-lg font-semibold mb-4 text-gray-700 dark:text-white">
               Course Includes:
             </h2>
-            <ul className="space-y-3 text-sm md:text-base text-gray-600">
-              <li className="flex items-center justify-between dark:text-gray-300">
+            <div className="space-y-3 text-sm md:text-base text-gray-600">
+              <h3 className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center ">
                   <SiNamebase className="mr-2 text-gray-500 dark:text-gray-300" />{" "}
                   Course :
                 </span>
-                <span>{tutorialData?.CourseName}</span>
-              </li>
-              <li className="flex items-center justify-between dark:text-gray-300">
+                <span>{CourseName}</span>
+              </h3>
+              <h3 className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <FaClock className="mr-2 text-gray-500" /> Duration:
                 </span>
-                <span>{tutorialData?.duration}</span>
-              </li>
-              <li className="flex items-center justify-between dark:text-gray-300">
+                <span>{duration}</span>
+              </h3>
+              <h3 className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <FaBook className="mr-2 text-gray-500" /> Lessons:
                 </span>
-                <span>{tutorialData?.totalLesson}</span>
-              </li>
-              <li className="flex items-center justify-between dark:text-gray-300">
+                <span>{totalLesson}</span>
+              </h3>
+              <h3 className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <FaUser className="mr-2 text-gray-500" /> Students:
                 </span>
-                <span>{tutorialData?.totalStudent}</span>
-              </li>
-              <li className="flex items-center justify-between dark:text-gray-300">
+                <span>{totalStudent}</span>
+              </h3>
+              <h3 className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <MdOutlineReviews className="mr-2 text-gray-500" /> Review :
                 </span>
-                <span>{tutorialData.review}</span>
-              </li>
-              <li className="flex items-center justify-between dark:text-gray-300">
+                <span>{review}</span>
+              </h3>
+              <h3 className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <FaGlobe className="mr-2 text-gray-500" /> Language:
                 </span>
-                <span>{tutorialData?.tutorialLanguage}</span>
-              </li>
-              <li className="flex items-center justify-between dark:text-gray-300">
+                <span>{tutorialLanguage}</span>
+              </h3>
+              <h3 className="flex items-center justify-between dark:text-gray-300">
                 <span className="flex items-center">
                   <FaCertificate className="mr-2 text-gray-500" />{" "}
                   Certification:
                 </span>
-                <span>{tutorialData.certification}</span>
-              </li>
-            </ul>
+                <span>{certification}</span>
+              </h3>
+            </div>
             <div className="mt-6">
               <p className="text-2xl text-error font-bold mb-2">
-                ${tutorialData?.tutorialPrice}
+                ${tutorialPrice}
               </p>
               <button
                 onClick={handleBooked}
@@ -193,17 +224,17 @@ const TutorialDetails = () => {
               Instructor Info{" "}
             </h3>
             <div className="w-16 h-16 rounded-full border-2 flex justify-center items-center mb-2">
-              <img src={tutorialData?.tutorImage} alt="" />
+              <img src={tutorImage} alt="" />
             </div>
             <h3 className="text-3xl font-bold dark:text-gray-300">
-              {tutorialData?.tutorName}
+              {tutorName}
             </h3>
           </div>
           <h2 className="text-xl md:text-2xl font-semibold mb-4 text-gray-800 dark:text-white">
             Course Description
           </h2>
           <p className="text-gray-600 mb-6 leading-relaxed w-full md:w-2/3 text-justify dark:text-gray-300">
-            {tutorialData?.tutorialDescription}
+            {tutorialDescription}
           </p>
 
           <h3 className="text-lg md:text-xl font-semibold mb-4 text-gray-800 dark:text-white">

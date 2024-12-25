@@ -24,7 +24,7 @@ const CategoryCard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
           {tutorials.map((tutorial) => (
             <Link
-              to={`/find-tutors/${tutorial?._id}`}
+              to={`/find-tutor/${tutorial?._id}`}
               state={tutorial?.CourseName}
               key={tutorial._id}
               className={`p-6 rounded-lg shadow-md flex gap-4 items-center  justify-center bg-gradient-to-r from-primaryColor/20 to-error/20 dark:bg-gradient-to-r dark:from-slate-600 dark:to-slate-800 dark:text-white`}
