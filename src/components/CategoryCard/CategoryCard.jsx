@@ -7,9 +7,11 @@ import { Link } from "react-router-dom";
 const CategoryCard = () => {
   const [tutorials, setTutorials] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/tutorials/category").then((res) => {
-      setTutorials(res.data);
-    });
+    axios
+      .get("https://b10-asm11-server.vercel.app/tutorials/category")
+      .then((res) => {
+        setTutorials(res.data);
+      });
   }, []);
   return (
     <div className="w-11/12 md:w-3/4 mx-auto">
@@ -22,7 +24,7 @@ const CategoryCard = () => {
           et dolore
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
-          {tutorials.map((tutorial) => (
+          {tutorials.slice(0, 12).map((tutorial) => (
             <Link
               to={`/find-tutor/${tutorial?._id}`}
               state={tutorial?.CourseName}

@@ -4,7 +4,7 @@ const RightTutor = () => {
   return (
     <>
       <div>
-        <div className="text-center ">
+        <div className="text-center w-11/12 md:w-3/4 mx-auto">
           <h3 className="text-2xl font-semibold md:text-3xl lg:text-4xl dark:text-white">
             Suggest the right tutor for you.
           </h3>

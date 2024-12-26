@@ -21,7 +21,9 @@ const MyBookedTutors = () => {
   // /=========>>>>> review update
   const handleReviewUpdate = async (id) => {
     // console.log(id);
-    const { data } = await axios.post(`http://localhost:5000/my-booked/${id}`);
+    const { data } = await axios.post(
+      `https://b10-asm11-server.vercel.app/my-booked/${id}`
+    );
     // console.log(data);
     if (data.modifiedCount === 1) {
       Swal.fire({

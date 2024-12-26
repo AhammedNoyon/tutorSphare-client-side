@@ -3,8 +3,8 @@ import loadingAnimation from "../../assets/lottie/loding/Animation - 17352039838
 const Loading = () => {
   return (
     <div
-      className="flex justify-center items-center gap-2
-     mt-64"
+      className="flex flex-col md:flex-row justify-center items-center gap-2
+     mt-64 w-11/12 md:w-3/4"
     >
       <Lottie animationData={loadingAnimation} loop={true}></Lottie>
       <h3 className="text-4xl font-bold dark:text-white">Loading...!</h3>

@@ -9,7 +9,9 @@ const Category = () => {
   const [categoryTutorials, setCategoryTutorials] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/tutorials?category=${location?.state}`)
+      .get(
+        `https://b10-asm11-server.vercel.app/tutorials?category=${location?.state}`
+      )
       .then((res) => {
         setCategoryTutorials(res.data);
       });

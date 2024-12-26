@@ -31,7 +31,7 @@ const UpdateMyTutorials = () => {
   console.log(myTutorials);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/tutorial?id=${id}`)
+      .get(`https://b10-asm11-server.vercel.app/tutorial?id=${id}`)
       .then((res) => {
         setMyTutorials(res.data);
       })
@@ -47,13 +47,13 @@ const UpdateMyTutorials = () => {
     const updateInfoConvertObj = Object.fromEntries(updateInfo.entries());
     console.log(updateInfoConvertObj);
     const { data } = await axios.put(
-      `http://localhost:5000/tutorial?id=${id}`,
+      `https://b10-asm11-server.vercel.app/tutorial?id=${id}`,
       updateInfoConvertObj
     );
     console.log(data);
     if (data.modifiedCount === 1) {
       Swal.fire({
-        position: "top-end",
+        position: "center",
         icon: "success",
         title: "Updated successfully",
         showConfirmButton: false,

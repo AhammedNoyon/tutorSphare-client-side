@@ -16,7 +16,7 @@ const MyTutorials = () => {
   useEffect(() => {
     if (user?.email) {
       axiosPrivate
-        .get(`http://localhost:5000/tutorials/${user?.email}`)
+        .get(`https://b10-asm11-server.vercel.app/tutorials/${user?.email}`)
         .then((res) => {
           setTutorials(res.data);
         });
@@ -25,7 +25,7 @@ const MyTutorials = () => {
   ///=========>>> Delete Not Okay
   const handleDelete = async (id) => {
     const { data } = await axios.delete(
-      `http://localhost:5000/tutorials/${id}`
+      `https://b10-asm11-server.vercel.app/tutorials/${id}`
     );
     // console.log(data);
     if (data.deletedCount === 1) {

@@ -2,6 +2,9 @@ import banner1 from "../../assets/banner/banner1.jpg";
 import banner3 from "../../assets/banner/banner3.jpg";
 import banner4 from "../../assets/banner/banner4.jpg";
 import banner5 from "../../assets/banner/banner5.jpg";
+import * as motion from "motion/react-client";
+import starAnimation from "../../assets/lottie/star/Animation - 1735211967208.json";
+import Lottie from "lottie-react";
 
 const Slider = () => {
   return (
@@ -12,7 +15,7 @@ const Slider = () => {
           className="carousel-item relative w-full bg-[#EAF0F2] dark:bg-slate-800"
         >
           <div className="relative  pt-16">
-            <div className="w-11/12 md:w-3/4 h-[500px] mx-auto flex flex-col-reverse lg:flex-row items-center lg:space-x-12 px-6">
+            <div className="w-11/12 md:w-3/4  h-[500px] mx-auto flex flex-col-reverse lg:flex-row items-center lg:space-x-12 px-6">
               {/* Text Section */}
               <div className="lg:w-1/2 text-center lg:text-left mt-8 lg:mt-0">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 leading-tight dark:text-white">
@@ -144,23 +147,37 @@ const Slider = () => {
             </div>
 
             {/* Image Section */}
-            <div className="lg:w-1/2 relative mt-8 lg:mt-0">
-              <div className="relative z-10 lg:w-[350px] lg:h-[350px]">
-                <img
+            <div className="lg:w-1/2 relative mt-8 lg:mt-0 ">
+              <div
+                // style={box}
+                // animate={{ rotate: 360 }}
+                // transition={{ duration: 1 }}
+                className="relative z-10 lg:w-[350px] lg:h-[350px] "
+              >
+                <motion.img
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 5 }}
                   src={banner3}
                   alt="Main Student"
                   className="rounded-lg shadow-lg mx-auto lg:mx-0 lg:ml-24 mt-20 lg:mt-14"
                 />
+                <div className="absolute -top-20 -right-44 w-32 h-32 hidden lg:block">
+                  <Lottie animationData={starAnimation} loop={true}></Lottie>
+                </div>
               </div>
               <div className="absolute top-[-50px] left-[50px] hidden lg:block w-[220px] h-[220px]">
-                <img
+                <motion.img
+                  animate={{ x: [0, 20, 0] }}
+                  transition={{ duration: 10, repeat: Infinity }}
                   src={banner4}
                   alt="Student"
                   className="rounded-lg shadow-lg"
                 />
               </div>
               <div className="absolute bottom-[-50px] right-[50px] hidden lg:block w-[220px] h-[220px]">
-                <img
+                <motion.img
+                  animate={{ y: [0, 20, 0] }}
+                  transition={{ duration: 10, repeat: Infinity }}
                   src={banner5}
                   alt="Student"
                   className="rounded-lg shadow-lg"

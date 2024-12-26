@@ -40,7 +40,7 @@ const TutorialDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/tutorial?id=${id}`)
+      .get(`https://b10-asm11-server.vercel.app/tutorial?id=${id}`)
       .then((res) => {
         setTutorialData(res.data);
       })
@@ -81,7 +81,7 @@ const TutorialDetails = () => {
     };
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/my-booked",
+        "https://b10-asm11-server.vercel.app/my-booked",
         bookedTutorInfo
       );
       if (data.insertedId) {

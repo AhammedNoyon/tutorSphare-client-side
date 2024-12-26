@@ -10,10 +10,10 @@ const FindTutors = () => {
   const [search, setSearch] = useState("");
   // const axiosPrivateInstance = useAxiosPrivate();
   useEffect(() => {
-    // const { data } = axios.get("http://localhost:5000/tutorials");
+    // const { data } = axios.get("https://b10-asm11-server.vercel.app/tutorials");
     // console.log(data);
     axios
-      .get(`http://localhost:5000/tutorials?search=${search}`)
+      .get(`https://b10-asm11-server.vercel.app/tutorials?search=${search}`)
       .then((res) => {
         setTutorials(res.data);
       });
@@ -44,7 +44,7 @@ const FindTutors = () => {
           <input
             onBlur={(e) => setSearch(e.target.value)}
             type="text"
-            className="grow "
+            className="grow dark:text-white"
             placeholder="Search"
           />
           <svg
@@ -141,6 +141,13 @@ const FindTutors = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="w-11/12 md:w-3/4 mx-auto">
+        {tutorials.length <= 0 && (
+          <h3 className="text-5xl text-center mb-10 dark:text-white font-bold">
+            No Results
+          </h3>
+        )}
       </div>
     </div>
   );
