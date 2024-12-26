@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { LuLightbulb } from "react-icons/lu";
 import { MdDarkMode } from "react-icons/md";
 import { useTheme } from "../../hooks/theme/useTheme";
+import logo from "../../assets/logo/logo.jpg";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
@@ -83,9 +84,14 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <h3 className=" text-2xl font-bold dark:text-gray-100 md:text-3xl lg:text-5xl">
-          TutorSphere
-        </h3>
+        <div className="flex gap-x-2 items-center">
+          <div className="hidden md:block h-[80px] w-[80px]">
+            <img className="w-full" src={logo} alt="" />
+          </div>
+          <h3 className=" text-2xl font-bold dark:text-gray-100 md:text-3xl lg:text-5xl">
+            TutorSphere
+          </h3>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-xl font-medium dark:text-gray-400">

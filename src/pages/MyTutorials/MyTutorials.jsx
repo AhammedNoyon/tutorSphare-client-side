@@ -5,50 +5,38 @@ import { MdDeleteOutline, MdSystemUpdateAlt } from "react-icons/md";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-// import UseAxiosPrivate from "../../hooks/UseAxiosPrivate";
+import UseAxiosPrivate from "../../hooks/UseAxiosPrivate";
 
 const MyTutorials = () => {
   const { user } = useContext(AuthContext);
   const [tutorials, setTutorials] = useState([]);
-  // const axiosPrivate = UseAxiosPrivate();
+  const axiosPrivate = UseAxiosPrivate();
   // console.log(tutorials);
   ///=========>>> load tutorials
   useEffect(() => {
     if (user?.email) {
-      axios
+      axiosPrivate
         .get(`http://localhost:5000/tutorials/${user?.email}`)
         .then((res) => {
           setTutorials(res.data);
         });
     }
-  }, [user?.email]);
+  }, [user?.email, axiosPrivate]);
   ///=========>>> Delete Not Okay
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const { data } = axios.delete(`http://localhost:5000/tutorials/${id}`);
-        if (data.deletedCount === 1) {
-          setTutorials((prevTutorials) =>
-            prevTutorials.filter((tutorial) => tutorial._id !== id)
-          );
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success",
-          });
-        }
-      }
-    });
-
-    // tutorials.filter((tutorial) => setTutorials(tutorial._id !== id));
+  const handleDelete = async (id) => {
+    const { data } = await axios.delete(
+      `http://localhost:5000/tutorials/${id}`
+    );
+    // console.log(data);
+    if (data.deletedCount === 1) {
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+    }
+    const remaining = tutorials.filter((tutorial) => tutorial._id !== id);
+    setTutorials(remaining);
   };
 
   return (
@@ -128,6 +116,11 @@ const MyTutorials = () => {
             ))}
           </tbody>
         </table>
+        {tutorials.length <= 0 && (
+          <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold dark:text-white text-center mb-10 md:mb-20">
+            No Data Has Found
+          </h3>
+        )}
       </div>
     </div>
   );

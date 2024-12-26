@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { FaSave } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddTutorials = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleAddTutorial = async (event) => {
     event.preventDefault();
     const tutorialData = new FormData(event.target);
@@ -25,6 +27,7 @@ const AddTutorials = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate("/my-tutorials");
       }
     } catch (error) {
       console.log(error);

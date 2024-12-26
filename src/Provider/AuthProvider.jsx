@@ -61,9 +61,13 @@ const AuthProvider = ({ children }) => {
       setUser(currenUser);
       if (currenUser?.email) {
         const email = currenUser?.email;
-        const { data } = axios.post("http://localhost:5000/jwt", email, {
-          withCredentials: true,
-        });
+        const { data } = axios.post(
+          "http://localhost:5000/jwt",
+          { email },
+          {
+            withCredentials: true,
+          }
+        );
         setLoading(false);
       } else {
         const { data } = axios.post(

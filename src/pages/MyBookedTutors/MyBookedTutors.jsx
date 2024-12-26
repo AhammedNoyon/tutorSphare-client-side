@@ -4,20 +4,22 @@ import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import Swal from "sweetalert2";
+import UseAxiosPrivate from "../../hooks/UseAxiosPrivate";
 
 const MyBookedTutors = () => {
   const { user } = useContext(AuthContext);
   const [allBooked, setAllBooked] = useState([]);
+  const axiosPrivate = UseAxiosPrivate();
   // const location = useLocation();
   // const tutorId = location.state;
   // console.log(tutorId);
   useEffect(() => {
-    axios
+    axiosPrivate
       .get(`http://localhost:5000/my-booked?email=${user?.email}`)
       .then((res) => {
         setAllBooked(res.data);
       });
-  }, [user?.email]);
+  }, [user?.email, axiosPrivate]);
   // /=========>>>>> review update
   const handleReviewUpdate = async (id) => {
     // console.log(id);
@@ -98,6 +100,13 @@ const MyBookedTutors = () => {
             </button>
           </div>
         ))}
+      </div>
+      <div>
+        {allBooked.length <= 0 && (
+          <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold dark:text-white text-center mb-10 md:mb-20">
+            You Have Not booked any Tutor
+          </h3>
+        )}
       </div>
     </div>
   );

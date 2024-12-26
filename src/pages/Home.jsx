@@ -1,7 +1,7 @@
 import AboutUs from "../components/About/AboutUs";
 import CategoryCard from "../components/CategoryCard/CategoryCard";
 import LearAndGrouwth from "../components/LearnAndGrouwth/LearAndGrouwth";
-import PopularCourse from "../components/PopularCourse/PopularCourse";
+
 import RightTutor from "../components/RightTutor/RightTutor";
 import Slider from "../components/Slider/Slider";
 import Status from "../components/Status/Status";

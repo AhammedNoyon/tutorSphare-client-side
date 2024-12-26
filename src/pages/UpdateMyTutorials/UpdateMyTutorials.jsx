@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { GrDocumentUpdate } from "react-icons/gr";
@@ -8,7 +8,7 @@ import { GrDocumentUpdate } from "react-icons/gr";
 const UpdateMyTutorials = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
-  console.log(id);
+  const navigate = useNavigate();
 
   const [myTutorials, setMyTutorials] = useState({});
   const {
@@ -59,6 +59,7 @@ const UpdateMyTutorials = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate("/my-tutorials");
     }
   };
 
