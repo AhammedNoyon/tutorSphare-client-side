@@ -58,7 +58,7 @@ const Navbar = () => {
       });
   };
   return (
-    <nav className="navbar w-11/12 md:w-3/4 mx-auto p-0">
+    <nav className="navbar w-11/12 md:w-3/4 mx-auto px-0 dark:mb-2">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -85,10 +85,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex gap-x-2 items-center">
-          <div className="hidden md:block h-[80px] w-[80px]">
-            <img className="w-full" src={logo} alt="" />
+          <div className="hidden md:block h-[50px] w-[50px]">
+            <img className="w-full dark:rounded-full" src={logo} alt="" />
           </div>
-          <h3 className=" text-2xl font-bold dark:text-gray-100 md:text-3xl lg:text-5xl">
+          <h3 className=" text-2xl font-bold text-primaryColor  md:text-3xl lg:text-5xl">
             TutorSphere
           </h3>
         </div>

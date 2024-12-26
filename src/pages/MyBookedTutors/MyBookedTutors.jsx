@@ -14,11 +14,9 @@ const MyBookedTutors = () => {
   // const tutorId = location.state;
   // console.log(tutorId);
   useEffect(() => {
-    axiosPrivate
-      .get(`http://localhost:5000/my-booked?email=${user?.email}`)
-      .then((res) => {
-        setAllBooked(res.data);
-      });
+    axiosPrivate.get(`/my-booked?email=${user?.email}`).then((res) => {
+      setAllBooked(res.data);
+    });
   }, [user?.email, axiosPrivate]);
   // /=========>>>>> review update
   const handleReviewUpdate = async (id) => {
