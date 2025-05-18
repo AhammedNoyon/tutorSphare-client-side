@@ -22,7 +22,10 @@ const MyBookedTutors = () => {
   const handleReviewUpdate = async (id) => {
     // console.log(id);
     const { data } = await axios.post(
-      `https://b10-asm11-server.vercel.app/my-booked/${id}`
+      `https://b10-asm11-server.vercel.app/my-booked/${id}`,
+      {
+        withCredentials: true,
+      }
     );
     // console.log(data);
     if (data.modifiedCount === 1) {

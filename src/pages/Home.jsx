@@ -1,6 +1,7 @@
 import AboutUs from "../components/About/AboutUs";
 import CategoryCard from "../components/CategoryCard/CategoryCard";
 import LearAndGrouwth from "../components/LearnAndGrouwth/LearAndGrouwth";
+import Offer from "../components/Offer/Offer";
 
 import RightTutor from "../components/RightTutor/RightTutor";
 import Slider from "../components/Slider/Slider";
@@ -25,6 +26,9 @@ const Home = () => {
       </section>
       <section className="mt-12">
         <LearAndGrouwth></LearAndGrouwth>
+      </section>
+      <section className="my-10 md:my-20">
+        <Offer></Offer>
       </section>
       <section className="my-10 md:my-20">
         <Testimonial></Testimonial>

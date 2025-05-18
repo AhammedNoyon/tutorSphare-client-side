@@ -130,9 +130,9 @@ Loading states for better user experience.
 
 Commit Guidelines
 
-At least 15 meaningful commits on the client side.
+At least more meaningful commits on the client side.
 
-At least 8 meaningful commits on the server side, all with descriptive messages.
+At least more meaningful commits on the server side, all with descriptive messages.
 
 Contact
 
