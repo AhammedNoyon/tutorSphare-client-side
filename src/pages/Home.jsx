@@ -27,7 +27,7 @@ const Home = () => {
       <section className="mt-12">
         <LearAndGrouwth></LearAndGrouwth>
       </section>
-      <section className="my-10 md:my-20">
+      <section className="my-10 md:my-20 md:px-12 w-11/12 md:w-3/4  mx-auto mt-10 md:mt-20">
         <Offer></Offer>
       </section>
       <section className="my-10 md:my-20">
