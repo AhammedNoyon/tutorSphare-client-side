@@ -5,7 +5,7 @@ const RightTutor = () => {
     <>
       <div>
         <div className="text-center w-11/12 md:w-3/4 mx-auto">
-          <h3 className="text-2xl font-semibold md:text-3xl lg:text-4xl dark:text-white">
+          <h3 className="text-2xl font-semibold md:text-5xl lg:text-4xl dark:text-white">
             Suggest the right tutor for you.
           </h3>
           <p className="text-lg mt-2 mb-20 dark:text-gray-300">

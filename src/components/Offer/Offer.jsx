@@ -6,7 +6,7 @@ import { LuMonitor } from "react-icons/lu";
 const Offer = () => {
   return (
     <>
-      <div className="lg:flex justify-between gap-10">
+      <div className="lg:flex justify-between items-center gap-10">
         <div className="">
           <img
             className="w-full mx-auto rounded-xl mb-10 lg:mb-0"
@@ -19,7 +19,7 @@ const Offer = () => {
           <h2 className="text-6xl font-medium dark:text-white mt-8 mb-4">
             We Offer You a Brighter Future
           </h2>
-          <p className="dark:text-white text-xl">
+          <p className="dark:text-white text-xl text-justify">
             Welcome to the exclusive Offer Section of TutorSphare! Here, you'll
             find amazing deals and discounts to make your learning journey more
             affordable and effective. Whether you're looking for your favorite
@@ -29,7 +29,7 @@ const Offer = () => {
             closer to your goals!
           </p>
           <div className="flex  gap-5 items-center dark:text-white mb-3 mt-8">
-            <div className="text-xl bg-primaryColor p-2 rounded-full">
+            <div className="text-xl bg-primaryColor p-2 rounded-full text-white">
               <AiOutlineAim />
             </div>
             <p className="text-xl font-semibold">
@@ -37,19 +37,19 @@ const Offer = () => {
             </p>
           </div>
           <div className="flex  gap-5 items-center dark:text-white mb-3 ">
-            <div className="text-xl bg-primaryColor p-2 rounded-full">
+            <div className="text-xl bg-primaryColor p-2 rounded-full text-white">
               <RiShoppingBag4Fill />
             </div>
             <p className="text-xl font-semibold">Having Flexible Schedule</p>
           </div>
           <div className="flex  gap-5 items-center dark:text-white mb-3 ">
-            <div className="text-xl bg-primaryColor p-2 rounded-full">
+            <div className="text-xl bg-primaryColor p-2 rounded-full text-white">
               <FaGraduationCap />
             </div>
             <p className="text-xl font-semibold">Programming for Classes</p>
           </div>
           <div className="flex  gap-5 items-center dark:text-white mb-3 ">
-            <div className="text-xl bg-primaryColor p-2 rounded-full">
+            <div className="text-xl bg-primaryColor p-2 rounded-full text-white">
               <LuMonitor />
             </div>
             <p className="text-xl font-semibold">

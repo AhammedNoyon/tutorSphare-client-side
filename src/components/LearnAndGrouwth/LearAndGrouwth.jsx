@@ -4,7 +4,7 @@ import growthAnimation from "../../assets/lottie/growth/Animation - 173498102561
 
 const LearAndGrouwth = () => {
   return (
-    <section className="md:px-12 w-11/12 md:w-3/4  mx-auto mt-10 md:mt-20">
+    <section className="md:px-12 w-11/12 md:w-3/4  mx-auto my-10 md:my-48 ">
       <div className=" mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-gray-800 md:text-5xl dark:text-white">
           Unlock Your Potential with{" "}

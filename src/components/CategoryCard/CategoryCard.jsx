@@ -16,7 +16,7 @@ const CategoryCard = () => {
   return (
     <div className="w-11/12 md:w-3/4 mx-auto">
       <div className="py-16 bg-white dark:bg-[#111627] text-center">
-        <h2 className="text-3xl font-bold mb-4 dark:text-white">
+        <h2 className="text-5xl font-bold mb-4 dark:text-white">
           Top Categories
         </h2>
         <p className="text-gray-500 mb-8 dark:text-gray-300">
